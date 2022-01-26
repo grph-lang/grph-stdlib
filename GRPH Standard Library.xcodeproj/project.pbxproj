@@ -6,11 +6,82 @@
 	objectVersion = 55;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		20A04DFE27A1BB74002B11AB /* standard.c in Sources */ = {isa = PBXBuildFile; fileRef = 20A04DFD27A1BB74002B11AB /* standard.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		20A04DF827A1BB74002B11AB /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		20A04DFA27A1BB74002B11AB /* libgrph */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = libgrph; sourceTree = BUILT_PRODUCTS_DIR; };
+		20A04DFD27A1BB74002B11AB /* standard.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = standard.c; sourceTree = "<group>"; };
+		20A04E0227A1BBDC002B11AB /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		20A04E0527A1C4C7002B11AB /* grph_types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = grph_types.h; sourceTree = "<group>"; };
+		20A04E0627A1C81A002B11AB /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		20A04DF727A1BB74002B11AB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
 /* Begin PBXGroup section */
 		20A04DEB27A1BAB0002B11AB = {
 			isa = PBXGroup;
 			children = (
+				20A04E0627A1C81A002B11AB /* .gitignore */,
+				20A04E0427A1C49A002B11AB /* include */,
+				20A04E0327A1C025002B11AB /* sources */,
+				20A04E0227A1BBDC002B11AB /* Makefile */,
+				20A04DFB27A1BB74002B11AB /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		20A04DFB27A1BB74002B11AB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				20A04DFA27A1BB74002B11AB /* libgrph */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		20A04DFC27A1BB74002B11AB /* libgrph */ = {
+			isa = PBXGroup;
+			children = (
+				20A04DFD27A1BB74002B11AB /* standard.c */,
+			);
+			path = libgrph;
+			sourceTree = "<group>";
+		};
+		20A04E0327A1C025002B11AB /* sources */ = {
+			isa = PBXGroup;
+			children = (
+				20A04DFC27A1BB74002B11AB /* libgrph */,
+			);
+			path = sources;
+			sourceTree = "<group>";
+		};
+		20A04E0427A1C49A002B11AB /* include */ = {
+			isa = PBXGroup;
+			children = (
+				20A04E0527A1C4C7002B11AB /* grph_types.h */,
+			);
+			path = include;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -22,7 +93,8 @@
 			buildConfigurationList = 20A04DF327A1BAB0002B11AB /* Build configuration list for PBXLegacyTarget "GRPH Standard Library" */;
 			buildPhases = (
 			);
-			buildToolPath = /usr/bin/clang;
+			buildToolPath = /usr/bin/make;
+			buildWorkingDirectory = "/Users/emil/Documents/xcode-projects/GRPH Standard Library";
 			dependencies = (
 			);
 			name = "GRPH Standard Library";
@@ -30,6 +102,26 @@
 			productName = "GRPH Standard Library";
 		};
 /* End PBXLegacyTarget section */
+
+/* Begin PBXNativeTarget section */
+		20A04DF927A1BB74002B11AB /* libgrph */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 20A04DFF27A1BB74002B11AB /* Build configuration list for PBXNativeTarget "libgrph" */;
+			buildPhases = (
+				20A04DF627A1BB74002B11AB /* Sources */,
+				20A04DF727A1BB74002B11AB /* Frameworks */,
+				20A04DF827A1BB74002B11AB /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = libgrph;
+			productName = libgrph;
+			productReference = 20A04DFA27A1BB74002B11AB /* libgrph */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		20A04DEC27A1BAB0002B11AB /* Project object */ = {
@@ -39,6 +131,9 @@
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
 					20A04DF027A1BAB0002B11AB = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					20A04DF927A1BB74002B11AB = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
 				};
@@ -52,13 +147,26 @@
 				Base,
 			);
 			mainGroup = 20A04DEB27A1BAB0002B11AB;
+			productRefGroup = 20A04DFB27A1BB74002B11AB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				20A04DF027A1BAB0002B11AB /* GRPH Standard Library */,
+				20A04DF927A1BB74002B11AB /* libgrph */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		20A04DF627A1BB74002B11AB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20A04DFE27A1BB74002B11AB /* standard.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
 		20A04DF127A1BAB0002B11AB /* Debug */ = {
@@ -193,6 +301,26 @@
 			};
 			name = Release;
 		};
+		20A04E0027A1BB74002B11AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				MACOSX_DEPLOYMENT_TARGET = 11.6;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		20A04E0127A1BB74002B11AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				MACOSX_DEPLOYMENT_TARGET = 11.6;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -210,6 +338,15 @@
 			buildConfigurations = (
 				20A04DF427A1BAB0002B11AB /* Debug */,
 				20A04DF527A1BAB0002B11AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		20A04DFF27A1BB74002B11AB /* Build configuration list for PBXNativeTarget "libgrph" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20A04E0027A1BB74002B11AB /* Debug */,
+				20A04E0127A1BB74002B11AB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
