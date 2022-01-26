@@ -28,6 +28,7 @@
 		20A04E0227A1BBDC002B11AB /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		20A04E0527A1C4C7002B11AB /* grph_types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = grph_types.h; sourceTree = "<group>"; };
 		20A04E0627A1C81A002B11AB /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		20A04E0727A1CA6E002B11AB /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +49,7 @@
 				20A04E0427A1C49A002B11AB /* include */,
 				20A04E0327A1C025002B11AB /* sources */,
 				20A04E0227A1BBDC002B11AB /* Makefile */,
+				20A04E0727A1CA6E002B11AB /* LICENSE.txt */,
 				20A04DFB27A1BB74002B11AB /* Products */,
 			);
 			sourceTree = "<group>";
