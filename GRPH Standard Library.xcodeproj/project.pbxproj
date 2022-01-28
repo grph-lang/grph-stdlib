@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		20A04DFE27A1BB74002B11AB /* standard.c in Sources */ = {isa = PBXBuildFile; fileRef = 20A04DFD27A1BB74002B11AB /* standard.c */; };
+		20A04E0B27A323CD002B11AB /* stdio.c in Sources */ = {isa = PBXBuildFile; fileRef = 20A04E0A27A323CD002B11AB /* stdio.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +30,9 @@
 		20A04E0527A1C4C7002B11AB /* grph_types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = grph_types.h; sourceTree = "<group>"; };
 		20A04E0627A1C81A002B11AB /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		20A04E0727A1CA6E002B11AB /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		20A04E0A27A323CD002B11AB /* stdio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stdio.c; sourceTree = "<group>"; };
+		20A04E1027A40D37002B11AB /* standard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = standard.h; sourceTree = "<group>"; };
+		20A04E1127A40D37002B11AB /* stdio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdio.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +69,7 @@
 		20A04DFC27A1BB74002B11AB /* libgrph */ = {
 			isa = PBXGroup;
 			children = (
+				20A04E0A27A323CD002B11AB /* stdio.c */,
 				20A04DFD27A1BB74002B11AB /* standard.c */,
 			);
 			path = libgrph;
@@ -81,9 +86,19 @@
 		20A04E0427A1C49A002B11AB /* include */ = {
 			isa = PBXGroup;
 			children = (
+				20A04E0F27A40D37002B11AB /* ns */,
 				20A04E0527A1C4C7002B11AB /* grph_types.h */,
 			);
 			path = include;
+			sourceTree = "<group>";
+		};
+		20A04E0F27A40D37002B11AB /* ns */ = {
+			isa = PBXGroup;
+			children = (
+				20A04E1027A40D37002B11AB /* standard.h */,
+				20A04E1127A40D37002B11AB /* stdio.h */,
+			);
+			path = ns;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,6 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				20A04DFE27A1BB74002B11AB /* standard.c in Sources */,
+				20A04E0B27A323CD002B11AB /* stdio.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,7 @@
 //  file, You can obtain one at https://mozilla.org/MPL/2.0/.
 //
 
+#include "ns/stdio.h"
 #include "grph_types.h"
 
 #include <unistd.h>
@@ -18,7 +19,7 @@ void grph_stdio_printOut(grph_string_t message)
     write(1, message.buffer, STR_LEN(message));
 }
 
-void grph_stdio_printErr(grph_string_t message)
+void grph_stdio_printError(grph_string_t message)
 {
     write(2, message.buffer, STR_LEN(message));
 }

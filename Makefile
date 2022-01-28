@@ -1,8 +1,12 @@
 ##
-## GRPH STANDARD LIBRARY
-## Makefile
-## File description:
-## Build the libraries
+##  Makefile
+##  GRPH stdlib - libgrph
+##
+##  Created by Emil Pedersen on 26/01/2022.
+##
+##  This Source Code Form is subject to the terms of the Mozilla Public
+##  License, v. 2.0. If a copy of the MPL was not distributed with this
+##  file, You can obtain one at https://mozilla.org/MPL/2.0/.
 ##
 
 GRPH_SRC	=	$(wildcard sources/libgrph/*.c)
@@ -23,7 +27,7 @@ tests_run:	clean_cov $(TEST)
 %.o:	sources/libgrph/%.c
 	clang -Wall -Wextra -c -o $@ $< -Iinclude
 
-%.g.o:	sources/%.c
+%.g.o:	sources/libgrph/%.c
 	clang -Wall -Wextra --coverage -c -o $@ $< -Iinclude
 
 %.t.o:	tests/%.c

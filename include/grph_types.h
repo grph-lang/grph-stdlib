@@ -14,7 +14,7 @@
 
 #include <stdint.h>
 
-typedef int64_t grph_int_t;
+typedef int64_t grph_integer_t;
 typedef double grph_float_t;
 typedef float grph_rotation_t;
 typedef char grph_boolean_t;

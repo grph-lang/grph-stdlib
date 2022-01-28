@@ -9,12 +9,13 @@
 //  file, You can obtain one at https://mozilla.org/MPL/2.0/.
 //
 
+#include "ns/standard.h"
 #include "grph_types.h"
 
 #include <unistd.h>
 #include <stdlib.h>
 
-void grph_standard_wait(grph_int_t time)
+void grph_standard_wait(grph_integer_t time)
 {
     usleep(time * 1000);
 }
