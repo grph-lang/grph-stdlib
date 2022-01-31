@@ -26,9 +26,7 @@ struct {
 
 struct {
     uint64_t metadata;
-    char *buffer;
+    void *buffer;
 } typedef grph_string_t;
-
-#define STR_LEN(str) ((str).metadata & ~(1ULL << 63))
 
 #endif /* GRPH_TYPES_H */

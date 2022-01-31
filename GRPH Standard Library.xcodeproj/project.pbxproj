@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		20A04DFE27A1BB74002B11AB /* standard.c in Sources */ = {isa = PBXBuildFile; fileRef = 20A04DFD27A1BB74002B11AB /* standard.c */; };
 		20A04E0B27A323CD002B11AB /* stdio.c in Sources */ = {isa = PBXBuildFile; fileRef = 20A04E0A27A323CD002B11AB /* stdio.c */; };
+		20A69D3827A8175D00014B26 /* test_strings.c in Sources */ = {isa = PBXBuildFile; fileRef = 20A69D3327A8171B00014B26 /* test_strings.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,6 +34,8 @@
 		20A04E0A27A323CD002B11AB /* stdio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stdio.c; sourceTree = "<group>"; };
 		20A04E1027A40D37002B11AB /* standard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = standard.h; sourceTree = "<group>"; };
 		20A04E1127A40D37002B11AB /* stdio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdio.h; sourceTree = "<group>"; };
+		20A69D3127A80EC100014B26 /* grph_string_t.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = grph_string_t.h; sourceTree = "<group>"; };
+		20A69D3327A8171B00014B26 /* test_strings.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = test_strings.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +55,7 @@
 				20A04E0627A1C81A002B11AB /* .gitignore */,
 				20A04E0427A1C49A002B11AB /* include */,
 				20A04E0327A1C025002B11AB /* sources */,
+				20A69D3227A816ED00014B26 /* tests */,
 				20A04E0227A1BBDC002B11AB /* Makefile */,
 				20A04E0727A1CA6E002B11AB /* LICENSE.txt */,
 				20A04DFB27A1BB74002B11AB /* Products */,
@@ -88,6 +92,7 @@
 			children = (
 				20A04E0F27A40D37002B11AB /* ns */,
 				20A04E0527A1C4C7002B11AB /* grph_types.h */,
+				20A69D3127A80EC100014B26 /* grph_string_t.h */,
 			);
 			path = include;
 			sourceTree = "<group>";
@@ -101,6 +106,14 @@
 			path = ns;
 			sourceTree = "<group>";
 		};
+		20A69D3227A816ED00014B26 /* tests */ = {
+			isa = PBXGroup;
+			children = (
+				20A69D3327A8171B00014B26 /* test_strings.c */,
+			);
+			path = tests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXLegacyTarget section */
@@ -111,12 +124,26 @@
 			buildPhases = (
 			);
 			buildToolPath = /usr/bin/make;
-			buildWorkingDirectory = "/Users/emil/Documents/xcode-projects/GRPH Standard Library";
+			buildWorkingDirectory = "";
 			dependencies = (
 			);
 			name = "GRPH Standard Library";
 			passBuildSettingsInEnvironment = 1;
 			productName = "GRPH Standard Library";
+		};
+		20A69D3A27A81AFD00014B26 /* Unit tests */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = tests_run;
+			buildConfigurationList = 20A69D3B27A81AFD00014B26 /* Build configuration list for PBXLegacyTarget "Unit tests" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/bin/make;
+			buildWorkingDirectory = "";
+			dependencies = (
+			);
+			name = "Unit tests";
+			passBuildSettingsInEnvironment = 1;
+			productName = "Unit tests";
 		};
 /* End PBXLegacyTarget section */
 
@@ -153,6 +180,9 @@
 					20A04DF927A1BB74002B11AB = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
+					20A69D3A27A81AFD00014B26 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
 				};
 			};
 			buildConfigurationList = 20A04DEF27A1BAB0002B11AB /* Build configuration list for PBXProject "GRPH Standard Library" */;
@@ -170,6 +200,7 @@
 			targets = (
 				20A04DF027A1BAB0002B11AB /* GRPH Standard Library */,
 				20A04DF927A1BB74002B11AB /* libgrph */,
+				20A69D3A27A81AFD00014B26 /* Unit tests */,
 			);
 		};
 /* End PBXProject section */
@@ -180,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				20A04DFE27A1BB74002B11AB /* standard.c in Sources */,
+				20A69D3827A8175D00014B26 /* test_strings.c in Sources */,
 				20A04E0B27A323CD002B11AB /* stdio.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,6 +371,31 @@
 			};
 			name = Release;
 		};
+		20A69D3C27A81AFD00014B26 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEBUGGING_SYMBOLS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "-isystem/opt/homebrew/Cellar/criterion/2.3.3-bleeding4/include";
+				OTHER_LDFLAGS = "-L/opt/homebrew/Cellar/criterion/2.3.3-bleeding4/lib";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		20A69D3D27A81AFD00014B26 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				OTHER_CFLAGS = "-isystem/opt/homebrew/Cellar/criterion/2.3.3-bleeding4/include";
+				OTHER_LDFLAGS = "-L/opt/homebrew/Cellar/criterion/2.3.3-bleeding4/lib";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -365,6 +422,15 @@
 			buildConfigurations = (
 				20A04E0027A1BB74002B11AB /* Debug */,
 				20A04E0127A1BB74002B11AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		20A69D3B27A81AFD00014B26 /* Build configuration list for PBXLegacyTarget "Unit tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20A69D3C27A81AFD00014B26 /* Debug */,
+				20A69D3D27A81AFD00014B26 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

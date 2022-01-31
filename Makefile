@@ -13,7 +13,8 @@ GRPH_SRC	=	$(wildcard sources/libgrph/*.c)
 TEST_SRC	=	$(wildcard tests/*.c)
 
 GRPH_OBJ	=	$(GRPH_SRC:sources/libgrph/%.c=%.o)
-TEST_OBJ	=	$(GRPH_SRC:%=%.t.o) $(TEST_SRC:%=%.g.o)
+TEST_OBJ	=	$(GRPH_SRC:sources/libgrph/%.c=%.g.o) \
+				$(TEST_SRC:tests/%.c=%.t.o)
 
 GRPH_STATIC	=	libgrph.a
 
@@ -31,13 +32,13 @@ tests_run:	clean_cov $(TEST)
 	clang -Wall -Wextra --coverage -c -o $@ $< -Iinclude
 
 %.t.o:	tests/%.c
-	clang -Wall -Wextra -c -o $@ $< -Iinclude
+	clang -Wall -Wextra -c -o $@ $< -Iinclude  $(OTHER_CFLAGS)
 
 $(GRPH_STATIC):	$(GRPH_OBJ)
 	ar rc $(GRPH_STATIC) $(GRPH_OBJ)
 
 $(TEST):	$(TEST_OBJ)
-	clang -o $(TEST) $(TEST_OBJ) -lcriterion --coverage
+	clang -o $(TEST) $(TEST_OBJ) -lcriterion --coverage $(OTHER_LDFLAGS)
 
 re: fclean all
 

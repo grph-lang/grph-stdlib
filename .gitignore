@@ -1,2 +1,12 @@
+.DS_Store
+
 *.a
+*.so
+*.dylib
+
 *.o
+
+*.gcno
+*.gcda
+
+unit_tests
