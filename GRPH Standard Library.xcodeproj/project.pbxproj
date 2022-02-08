@@ -25,6 +25,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		208DFD9427B32B3D0048A10D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		20A04DFA27A1BB74002B11AB /* libgrph */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = libgrph; sourceTree = BUILT_PRODUCTS_DIR; };
 		20A04DFD27A1BB74002B11AB /* standard.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = standard.c; sourceTree = "<group>"; };
 		20A04E0227A1BBDC002B11AB /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
@@ -57,6 +58,7 @@
 				20A04E0327A1C025002B11AB /* sources */,
 				20A69D3227A816ED00014B26 /* tests */,
 				20A04E0227A1BBDC002B11AB /* Makefile */,
+				208DFD9427B32B3D0048A10D /* README.md */,
 				20A04E0727A1CA6E002B11AB /* LICENSE.txt */,
 				20A04DFB27A1BB74002B11AB /* Products */,
 			);

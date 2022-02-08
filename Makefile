@@ -23,9 +23,13 @@ GRPH_STATIC	=	libgrph.a
 ifeq ($(OS),Darwin)
 	GRPH_DYN	=	libgrph.dylib
 	DYN_CMD		=	clang -dynamiclib
+	INSTALL_CMD	=	cp -c
+	POSTINSTALL_CMD	=
 else
 	GRPH_DYN	=	libgrph.so
 	DYN_CMD		=	clang -shared
+	INSTALL_CMD	=	cp
+	POSTINSTALL_CMD	=	ldconfig
 endif
 
 INSTALL_LOC	?=	/usr/local/lib
@@ -35,9 +39,10 @@ STATIC_CMD	=	ar rc
 
 TEST		=	unit_tests
 
-all:	$(GRPH_STATIC)
+all:	$(GRPH_DYN)
 
 install:	$(INSTALL_LIB)
+	$(POSTINSTALL_CMD)
 
 tests_run:	clean_cov $(TEST)
 	./$(TEST)
@@ -59,7 +64,7 @@ $(GRPH_DYN):	$(GRPH_OBJ)
 
 $(INSTALL_LIB):	$(GRPH_DYN)
 	mkdir -p $(INSTALL_LOC)
-	cp -c $(GRPH_DYN) $(INSTALL_LIB)
+	$(INSTALL_CMD) $(GRPH_DYN) $(INSTALL_LIB)
 
 $(TEST):	$(TEST_OBJ)
 	clang -o $(TEST) $(TEST_OBJ) -lcriterion --coverage $(OTHER_LDFLAGS)
