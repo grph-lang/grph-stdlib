@@ -59,7 +59,7 @@ $(GRPH_DYN):	$(GRPH_OBJ)
 
 $(INSTALL_LIB):	$(GRPH_DYN)
 	mkdir -p $(INSTALL_LOC)
-	cp $(GRPH_DYN) $(INSTALL_LIB)
+	cp -c $(GRPH_DYN) $(INSTALL_LIB)
 
 $(TEST):	$(TEST_OBJ)
 	clang -o $(TEST) $(TEST_OBJ) -lcriterion --coverage $(OTHER_LDFLAGS)
@@ -74,6 +74,9 @@ clean:	clean_cov
 	find . -name "*.gcno" -delete
 
 fclean:	clean
-	rm -f $(GRPH_STATIC) $(TEST)
+	rm -f $(GRPH_STATIC) $(GRPH_DYN) $(TEST)
+
+uninstall:
+	rm -f $(INSTALL_LIB)
 	
-.PHONY: all re clean_cov clean fclean
+.PHONY: all re clean_cov clean fclean tests_run install uninstall
