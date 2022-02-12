@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		208DFD9727B83E3F0048A10D /* fields.c in Sources */ = {isa = PBXBuildFile; fileRef = 208DFD9627B83E3F0048A10D /* fields.c */; };
 		20A04DFE27A1BB74002B11AB /* standard.c in Sources */ = {isa = PBXBuildFile; fileRef = 20A04DFD27A1BB74002B11AB /* standard.c */; };
 		20A04E0B27A323CD002B11AB /* stdio.c in Sources */ = {isa = PBXBuildFile; fileRef = 20A04E0A27A323CD002B11AB /* stdio.c */; };
 		20A69D3827A8175D00014B26 /* test_strings.c in Sources */ = {isa = PBXBuildFile; fileRef = 20A69D3327A8171B00014B26 /* test_strings.c */; };
@@ -26,6 +27,8 @@
 
 /* Begin PBXFileReference section */
 		208DFD9427B32B3D0048A10D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		208DFD9527B83E3F0048A10D /* grph_fields.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = grph_fields.h; sourceTree = "<group>"; };
+		208DFD9627B83E3F0048A10D /* fields.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = fields.c; sourceTree = "<group>"; };
 		20A04DFA27A1BB74002B11AB /* libgrph */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = libgrph; sourceTree = BUILT_PRODUCTS_DIR; };
 		20A04DFD27A1BB74002B11AB /* standard.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = standard.c; sourceTree = "<group>"; };
 		20A04E0227A1BBDC002B11AB /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
@@ -77,6 +80,7 @@
 			children = (
 				20A04E0A27A323CD002B11AB /* stdio.c */,
 				20A04DFD27A1BB74002B11AB /* standard.c */,
+				208DFD9627B83E3F0048A10D /* fields.c */,
 			);
 			path = libgrph;
 			sourceTree = "<group>";
@@ -94,6 +98,7 @@
 			children = (
 				20A04E0F27A40D37002B11AB /* ns */,
 				20A04E0527A1C4C7002B11AB /* grph_types.h */,
+				208DFD9527B83E3F0048A10D /* grph_fields.h */,
 				20A69D3127A80EC100014B26 /* grph_string_t.h */,
 			);
 			path = include;
@@ -212,6 +217,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				208DFD9727B83E3F0048A10D /* fields.c in Sources */,
 				20A04DFE27A1BB74002B11AB /* standard.c in Sources */,
 				20A69D3827A8175D00014B26 /* test_strings.c in Sources */,
 				20A04E0B27A323CD002B11AB /* stdio.c in Sources */,
@@ -357,9 +363,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 11.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SYSTEM_HEADER_SEARCH_PATHS = "/opt/homebrew/Cellar/criterion/2.3.3-bleeding4/include";
+				USER_HEADER_SEARCH_PATHS = include;
 			};
 			name = Debug;
 		};
@@ -367,9 +376,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 11.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SYSTEM_HEADER_SEARCH_PATHS = "/opt/homebrew/Cellar/criterion/2.3.3-bleeding4/include";
+				USER_HEADER_SEARCH_PATHS = include;
 			};
 			name = Release;
 		};

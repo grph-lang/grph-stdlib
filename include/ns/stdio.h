@@ -15,8 +15,8 @@
 #include "grph_types.h"
 
 grph_string_t grph_stdio_getLineInString(grph_string_t string, grph_integer_t line);
-grph_integer_t grph_stdio_getTimeInMillisSinceLoad();
-grph_string_t grph_stdio_getSVGFromCurrentImage();
+grph_integer_t grph_stdio_getTimeInMillisSinceLoad(void);
+grph_string_t grph_stdio_getSVGFromCurrentImage(void);
 void grph_stdio_printOut(grph_string_t message);
 void grph_stdio_printError(grph_string_t message);
 
