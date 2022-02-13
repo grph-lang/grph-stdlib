@@ -51,7 +51,6 @@ tests_run:	clean_cov $(TEST)
 	./$(TEST)
 
 %.bs.o:	sources/libgrph/%.grph
-	echo $$PATH
 	grph compile --emit=object -o $@ $< --disable-top-level-code --disable-mangling
 
 %.o:	sources/libgrph/%.c

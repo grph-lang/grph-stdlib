@@ -1,5 +1,5 @@
 //
-//  strutils.grph
+//  standard.grph
 //  GRPH stdlib - libgrph
 //
 //  Created by Emil Pedersen on 13/02/2022.
@@ -11,6 +11,5 @@
 
 #requires GRPH 1.11
 
-#import strutils
-
-#function integer grph_strutils_getStringLength[string str] = str.length
+#function float grph_standard_getXForPos[pos p] = p.x
+#function float grph_standard_getYForPos[pos p] = p.y
