@@ -10,9 +10,12 @@
 ##
 
 GRPH_SRC	=	$(wildcard sources/libgrph/*.c)
+GRPH_BS_SRC	=	$(wildcard sources/libgrph/*.grph)
 TEST_SRC	=	$(wildcard tests/*.c)
 
-GRPH_OBJ	=	$(GRPH_SRC:sources/libgrph/%.c=%.o)
+GRPH_OBJ	=	$(GRPH_SRC:sources/libgrph/%.c=%.o) \
+				$(GRPH_BS_SRC:sources/libgrph/%.grph=%.bs.o)
+
 TEST_OBJ	=	$(GRPH_SRC:sources/libgrph/%.c=%.g.o) \
 				$(TEST_SRC:tests/%.c=%.t.o)
 
@@ -46,6 +49,10 @@ install:	$(INSTALL_LIB)
 
 tests_run:	clean_cov $(TEST)
 	./$(TEST)
+
+%.bs.o:	sources/libgrph/%.grph
+	echo $$PATH
+	grph compile --emit=object -o $@ $< --disable-top-level-code --disable-mangling
 
 %.o:	sources/libgrph/%.c
 	clang -Wall -Wextra -c -o $@ $< -Iinclude -fPIC
