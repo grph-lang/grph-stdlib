@@ -64,4 +64,12 @@ static inline char *grph_string_get_data(grph_string_t *str)
     return str->buffer; // assume immortal, boxes aren't implemented
 }
 
+/// Creates a GRPH string
+static inline grph_string_t grph_string_literal(char *str, unsigned long long len)
+{
+    return (grph_string_t) { (0b110ULL << 61) | len, str };
+}
+
+#define grph_string_literal(str) grph_string_literal(str, sizeof(str) - 1)
+
 #endif /* GRPH_STRING_T_H */

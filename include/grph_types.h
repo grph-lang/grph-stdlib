@@ -29,4 +29,10 @@ struct {
     void *buffer;
 } typedef grph_string_t;
 
+typedef unsigned char *typeid;
+struct grph_existential {
+    typeid type;
+    void *data[3];
+};
+
 #endif /* GRPH_TYPES_H */
