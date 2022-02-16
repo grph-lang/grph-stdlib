@@ -1,0 +1,32 @@
+//
+//  strutils.grph
+//  GRPH stdlib - libgrph
+//
+//  Created by Emil Pedersen on 13/02/2022.
+//
+//  This Source Code Form is subject to the terms of the Mozilla Public
+//  License, v. 2.0. If a copy of the MPL was not distributed with this
+//  file, You can obtain one at https://mozilla.org/MPL/2.0/.
+//
+
+#requires GRPH 1.11
+
+#import strutils
+
+#function string int_to_string[integer number] = #external
+#function string float_to_string[float number] = #external
+
+#function string grphas_string[mixed val] = "<?invalid?>"
+	#if val is void
+		#return "void.VOID"
+	#elseif val is boolean
+		#if [val as! boolean]
+			#return "true"
+		#else
+			#return "false"
+	#elseif val is integer
+		#return int_to_string[[val as! integer]]
+	#elseif val is float
+		#return float_to_string[[val as! float]]
+	#elseif val is string
+		#return val as! string

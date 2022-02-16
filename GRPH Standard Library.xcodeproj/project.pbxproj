@@ -35,6 +35,7 @@
 		2090E2CA27BABE6B00DE1670 /* existentials.inc */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; path = existentials.inc; sourceTree = "<group>"; };
 		2090E2CB27BABF5600DE1670 /* existentials.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = existentials.h; sourceTree = "<group>"; };
 		2090E2CC27BAC2B600DE1670 /* conversion_string.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = conversion_string.c; sourceTree = "<group>"; };
+		2090E2CE27BD60D900DE1670 /* conversion_string.grph */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = conversion_string.grph; sourceTree = "<group>"; usesTabs = 1; };
 		20A04DFA27A1BB74002B11AB /* libgrph */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = libgrph; sourceTree = BUILT_PRODUCTS_DIR; };
 		20A04DFD27A1BB74002B11AB /* standard.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = standard.c; sourceTree = "<group>"; };
 		20A04E0227A1BBDC002B11AB /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
@@ -90,6 +91,7 @@
 				208DFD9927B9525D0048A10D /* strutils.grph */,
 				208DFD9627B83E3F0048A10D /* fields.c */,
 				2090E2CC27BAC2B600DE1670 /* conversion_string.c */,
+				2090E2CE27BD60D900DE1670 /* conversion_string.grph */,
 			);
 			path = libgrph;
 			sourceTree = "<group>";
