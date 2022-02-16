@@ -17,6 +17,7 @@ GRPH_OBJ	=	$(GRPH_SRC:sources/libgrph/%.c=%.o) \
 				$(GRPH_BS_SRC:sources/libgrph/%.grph=%.bs.o)
 
 TEST_OBJ	=	$(GRPH_SRC:sources/libgrph/%.c=%.g.o) \
+				$(GRPH_BS_SRC:sources/libgrph/%.grph=%.bs.o) \
 				$(TEST_SRC:tests/%.c=%.t.o)
 
 OS			?=	$(shell uname)
@@ -51,7 +52,7 @@ tests_run:	clean_cov $(TEST)
 	./$(TEST)
 
 %.bs.o:	sources/libgrph/%.grph
-	grph compile --emit=object -o $@ $< --disable-top-level-code --disable-mangling
+	grph compile --emit=object -o $@ $< --disable-top-level-code --disable-mangling --pic
 
 %.o:	sources/libgrph/%.c
 	clang -Wall -Wextra -c -o $@ $< -Iinclude -fPIC
@@ -64,7 +65,7 @@ tests_run:	clean_cov $(TEST)
 
 $(GRPH_STATIC):	$(GRPH_OBJ)
 	$(STATIC_CMD) $(GRPH_STATIC) $(GRPH_OBJ)
-	
+
 $(GRPH_DYN):	$(GRPH_OBJ)
 	$(DYN_CMD) -o $(GRPH_DYN) $(GRPH_OBJ)
 
@@ -89,5 +90,5 @@ fclean:	clean
 
 uninstall:
 	rm -f $(INSTALL_LIB)
-	
+
 .PHONY: all re clean_cov clean fclean tests_run install uninstall
