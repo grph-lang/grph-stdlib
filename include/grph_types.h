@@ -29,9 +29,9 @@ struct {
     void *buffer;
 } typedef grph_string_t;
 
-typedef unsigned char *typeid;
+typedef unsigned char *typeid_t;
 struct grph_existential {
-    typeid type;
+    typeid_t type;
     void *data[3];
 };
 

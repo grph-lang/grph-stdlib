@@ -14,6 +14,8 @@
 		20A04DFE27A1BB74002B11AB /* standard.c in Sources */ = {isa = PBXBuildFile; fileRef = 20A04DFD27A1BB74002B11AB /* standard.c */; };
 		20A04E0B27A323CD002B11AB /* stdio.c in Sources */ = {isa = PBXBuildFile; fileRef = 20A04E0A27A323CD002B11AB /* stdio.c */; };
 		20A69D3827A8175D00014B26 /* test_strings.c in Sources */ = {isa = PBXBuildFile; fileRef = 20A69D3327A8171B00014B26 /* test_strings.c */; };
+		20D640F527C003E6009B8159 /* test_char.c in Sources */ = {isa = PBXBuildFile; fileRef = 20D640F427C003E6009B8159 /* test_char.c */; };
+		20D640F727C00F78009B8159 /* test_conversion_string.c in Sources */ = {isa = PBXBuildFile; fileRef = 20D640F627C00F78009B8159 /* test_conversion_string.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -52,6 +54,8 @@
 		20A04E1127A40D37002B11AB /* stdio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdio.h; sourceTree = "<group>"; };
 		20A69D3127A80EC100014B26 /* grph_string_t.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = grph_string_t.h; sourceTree = "<group>"; };
 		20A69D3327A8171B00014B26 /* test_strings.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = test_strings.c; sourceTree = "<group>"; };
+		20D640F427C003E6009B8159 /* test_char.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = test_char.c; sourceTree = "<group>"; };
+		20D640F627C00F78009B8159 /* test_conversion_string.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = test_conversion_string.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +142,8 @@
 			children = (
 				20A69D3327A8171B00014B26 /* test_strings.c */,
 				2090E2D227BD84E000DE1670 /* test_stringContains.c */,
+				20D640F427C003E6009B8159 /* test_char.c */,
+				20D640F627C00F78009B8159 /* test_conversion_string.c */,
 			);
 			path = tests;
 			sourceTree = "<group>";
@@ -239,8 +245,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2090E2D327BD84E000DE1670 /* test_stringContains.c in Sources */,
+				20D640F527C003E6009B8159 /* test_char.c in Sources */,
 				208DFD9727B83E3F0048A10D /* fields.c in Sources */,
 				2090E2CD27BAC2BA00DE1670 /* conversion_string.c in Sources */,
+				20D640F727C00F78009B8159 /* test_conversion_string.c in Sources */,
 				20A04DFE27A1BB74002B11AB /* standard.c in Sources */,
 				2090E2D127BD724B00DE1670 /* strutils.c in Sources */,
 				20A69D3827A8175D00014B26 /* test_strings.c in Sources */,
