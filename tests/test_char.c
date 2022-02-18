@@ -1,8 +1,8 @@
 //
-//  test_stringContains.c
+//  test_char.c
 //  GRPH stdlib - libgrph
 //
-//  Created by Emil Pedersen on 16/02/2022.
+//  Created by Emil Pedersen on 18/02/2022.
 // 
 //  This Source Code Form is subject to the terms of the Mozilla Public
 //  License, v. 2.0. If a copy of the MPL was not distributed with this

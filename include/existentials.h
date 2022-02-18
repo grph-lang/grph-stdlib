@@ -15,7 +15,7 @@
 #define PRIMITIVE_TYPEID(id, name) \
     EXISTENTIAL_ID_##name = id,
 
-typedef enum : unsigned char {
+typedef enum {
     #include "existentials.inc"
 } existential_type_id_t;
 

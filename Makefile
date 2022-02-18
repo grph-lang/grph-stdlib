@@ -41,6 +41,8 @@ INSTALL_LIB	=	$(INSTALL_LOC)/$(GRPH_DYN)
 
 STATIC_CMD	=	ar rc
 
+CC			?=	gcc
+
 TEST		=	unit_tests
 
 all:	$(GRPH_DYN)
@@ -55,13 +57,13 @@ tests_run:	clean_cov $(TEST)
 	grph compile --emit=object -o $@ $< --disable-top-level-code --disable-mangling --pic
 
 %.o:	sources/libgrph/%.c
-	clang -Wall -Wextra -c -o $@ $< -Iinclude -fPIC
+	$(CC) -Wall -Wextra -c -o $@ $< -Iinclude -fPIC
 
 %.g.o:	sources/libgrph/%.c
-	clang -Wall -Wextra --coverage -c -o $@ $< -Iinclude
+	$(CC) -Wall -Wextra --coverage -c -o $@ $< -Iinclude
 
 %.t.o:	tests/%.c
-	clang -Wall -Wextra -c -o $@ $< -Iinclude  $(OTHER_CFLAGS)
+	$(CC) -Wall -Wextra -c -o $@ $< -Iinclude  $(OTHER_CFLAGS)
 
 $(GRPH_STATIC):	$(GRPH_OBJ)
 	$(STATIC_CMD) $(GRPH_STATIC) $(GRPH_OBJ)
@@ -74,7 +76,7 @@ $(INSTALL_LIB):	$(GRPH_DYN)
 	$(INSTALL_CMD) $(GRPH_DYN) $(INSTALL_LIB)
 
 $(TEST):	$(TEST_OBJ)
-	clang -o $(TEST) $(TEST_OBJ) -lcriterion --coverage $(OTHER_LDFLAGS)
+	$(CC) -o $(TEST) $(TEST_OBJ) -lcriterion --coverage $(OTHER_LDFLAGS)
 
 re: fclean all
 

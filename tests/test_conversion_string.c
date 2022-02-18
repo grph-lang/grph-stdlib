@@ -1,8 +1,8 @@
 //
-//  test_stringContains.c
+//  test_conversion_string.c
 //  GRPH stdlib - libgrph
 //
-//  Created by Emil Pedersen on 16/02/2022.
+//  Created by Emil Pedersen on 18/02/2022.
 // 
 //  This Source Code Form is subject to the terms of the Mozilla Public
 //  License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -30,7 +30,7 @@ Test(as_string, integer)
 Test(as_string, integer_max)
 {
     unsigned char id = EXISTENTIAL_ID_integer;
-    grph_string_t result = grphas_string(&id, (void *) LONG_LONG_MAX, NULL, NULL);
+    grph_string_t result = grphas_string(&id, (void *) LLONG_MAX, NULL, NULL);
     cr_assert_eq(grph_string_get_length(result), 19);
     cr_assert_str_eq(grph_string_get_data(&result), "9223372036854775807");
 }
@@ -38,7 +38,7 @@ Test(as_string, integer_max)
 Test(as_string, integer_min)
 {
     unsigned char id = EXISTENTIAL_ID_integer;
-    grph_string_t result = grphas_string(&id, (void *) LONG_LONG_MIN, NULL, NULL);
+    grph_string_t result = grphas_string(&id, (void *) LLONG_MIN, NULL, NULL);
     cr_assert_eq(grph_string_get_length(result), 20);
     cr_assert_str_eq(grph_string_get_data(&result), "-9223372036854775808");
 }
