@@ -15,6 +15,9 @@
 #define PRIMITIVE_TYPEID(id, name) \
     EXISTENTIAL_ID_##name = id,
 
+#define SPECIAL_TYPEID(id, name) \
+    EXISTENTIAL_ID_##name = id,
+
 typedef enum {
     #include "existentials.inc"
 } existential_type_id_t;
