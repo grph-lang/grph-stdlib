@@ -24,14 +24,16 @@ OS			?=	$(shell uname)
 
 GRPH_STATIC	=	libgrph.a
 
+CC			?=	gcc
+
 ifeq ($(OS),Darwin)
 	GRPH_DYN	=	libgrph.dylib
-	DYN_CMD		=	clang -dynamiclib
+	DYN_CMD		=	$(CC) -dynamiclib
 	INSTALL_CMD	=	cp -c
 	POSTINSTALL_CMD	=
 else
 	GRPH_DYN	=	libgrph.so
-	DYN_CMD		=	clang -shared
+	DYN_CMD		=	$(CC) -shared
 	INSTALL_CMD	=	cp
 	POSTINSTALL_CMD	=	ldconfig
 endif
@@ -40,8 +42,6 @@ INSTALL_LOC	?=	/usr/local/lib
 INSTALL_LIB	=	$(INSTALL_LOC)/$(GRPH_DYN)
 
 STATIC_CMD	=	ar rc
-
-CC			?=	gcc
 
 TEST		=	unit_tests
 

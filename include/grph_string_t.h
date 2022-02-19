@@ -64,6 +64,12 @@ static inline char *grph_string_get_data(grph_string_t *str)
     return str->buffer; // assume immortal, boxes aren't implemented
 }
 
+
+/// Converts a GRPH string to a nil-terminated C string
+/// @param str the GRPH string
+/// @param freeable out-only variable, true if you must free the result, false otherwise
+char *grph_to_cstring(grph_string_t *str, bool *freeable);
+
 /// Creates a GRPH string
 static inline grph_string_t grph_string_literal(char *str, unsigned long long len)
 {

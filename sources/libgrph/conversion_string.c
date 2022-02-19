@@ -9,9 +9,7 @@
 //  file, You can obtain one at https://mozilla.org/MPL/2.0/.
 //
 
-#include "existentials.h"
 #include "grph_types.h"
-#include "grph_string_t.h"
 
 #include <stdlib.h>
 #include <stdio.h>
