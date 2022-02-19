@@ -35,4 +35,7 @@ struct grph_existential {
     void *data[3];
 };
 
+#define grph_optional_t(wrapped) struct { bool exists; wrapped value; }
+#define GRPH_NULL {0}
+
 #endif /* GRPH_TYPES_H */

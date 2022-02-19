@@ -13,9 +13,9 @@
 #compiler strict true
 
 #function integer float_to_integer[float number] = #external
-#function integer string_to_integer[string number] = #external
+#function integer? string_to_integer[string number] = #external
 
-#function integer grphas_integer[mixed val]
+#function integer? grphas_integer[mixed val] = null
 	#if val is boolean
 		#if [val as! boolean]
 			#return 1

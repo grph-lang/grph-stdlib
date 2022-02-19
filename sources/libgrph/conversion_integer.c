@@ -16,12 +16,14 @@
 #include <stdio.h>
 #include <errno.h>
 
+typedef grph_optional_t(grph_integer_t) optional_integer_t;
+
 grph_integer_t float_to_integer(grph_float_t number)
 {
     return (grph_integer_t) number;
 }
 
-static grph_integer_t strtoll_chk(grph_string_t *str, int base, int offset, int multiplier)
+static optional_integer_t strtoll_chk(grph_string_t *str, int base, int offset, int multiplier)
 {
     bool need_free;
     char *data = grph_to_cstring(str, &need_free);
@@ -31,25 +33,25 @@ static grph_integer_t strtoll_chk(grph_string_t *str, int base, int offset, int 
     if (need_free)
         free(data);
     if (errno || *out) {
-        return false;
+        return (optional_integer_t) GRPH_NULL;
     } else {
-        return multiplier * result;
+        return (optional_integer_t) { true, multiplier * result };
     }
 }
 
-grph_integer_t string_to_integer(grph_string_t str)
+optional_integer_t string_to_integer(grph_string_t str)
 {
     grph_integer_t len = grph_string_get_length(str);
     char *data = grph_string_get_data(&str);
     int offset = 0;
     int multiplier = 1;
     if (len == 0)
-        return false;
+        return (optional_integer_t) GRPH_NULL;
     while (data[offset] == '+' || data[offset] == '-') {
         if (data[offset] == '-')
             multiplier *= -1;
         if (offset == len)
-            return false;
+            return (optional_integer_t) GRPH_NULL;
     }
     if (len - offset >= 2 && data[offset] == '0') {
         switch (data[offset + 1]) {

@@ -16,7 +16,7 @@
 #function string int_to_string[integer number] = #external
 #function string float_to_string[float number] = #external
 
-#function string grphas_string[mixed val] = "<?invalid?>"
+#function string? grphas_string[mixed val] = null
 	#if val is void
 		#return "void.VOID"
 	#elseif val is boolean
