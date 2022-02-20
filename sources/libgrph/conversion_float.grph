@@ -1,0 +1,24 @@
+//
+//  conversion_integer.grph
+//  GRPH stdlib - libgrph
+//
+//  Created by Emil Pedersen on 13/02/2022.
+//
+//  This Source Code Form is subject to the terms of the Mozilla Public
+//  License, v. 2.0. If a copy of the MPL was not distributed with this
+//  file, You can obtain one at https://mozilla.org/MPL/2.0/.
+//
+
+#requires GRPH 1.11
+#compiler strict true
+
+#function float integer_to_float[integer number] = #external
+#function float? string_to_float[string number] = #external
+
+#function float? grphas_float[mixed val] = null
+	#if val is integer
+		#return integer_to_float[[val as! integer]]
+	#elseif val is float
+		#return val as! float
+	#elseif val is string
+		#return string_to_float[[val as! string]]

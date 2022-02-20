@@ -69,14 +69,14 @@ $(GRPH_STATIC):	$(GRPH_OBJ)
 	$(STATIC_CMD) $(GRPH_STATIC) $(GRPH_OBJ)
 
 $(GRPH_DYN):	$(GRPH_OBJ)
-	$(DYN_CMD) -o $(GRPH_DYN) $(GRPH_OBJ)
+	$(DYN_CMD) -o $(GRPH_DYN) $(GRPH_OBJ) -lm
 
 $(INSTALL_LIB):	$(GRPH_DYN)
 	mkdir -p $(INSTALL_LOC)
 	$(INSTALL_CMD) $(GRPH_DYN) $(INSTALL_LIB)
 
 $(TEST):	$(TEST_OBJ)
-	$(CC) -o $(TEST) $(TEST_OBJ) -lcriterion --coverage $(OTHER_LDFLAGS)
+	$(CC) -o $(TEST) $(TEST_OBJ) -lcriterion --coverage -lm $(OTHER_LDFLAGS)
 
 re: fclean all
 

@@ -20,6 +20,8 @@
 		20D640FB27C12385009B8159 /* test_op_typeid_equal.c in Sources */ = {isa = PBXBuildFile; fileRef = 20D640FA27C12385009B8159 /* test_op_typeid_equal.c */; };
 		20D640FF27C1A259009B8159 /* conversion_integer.c in Sources */ = {isa = PBXBuildFile; fileRef = 20D640FE27C1A259009B8159 /* conversion_integer.c */; };
 		20D6410127C1A938009B8159 /* cstring.c in Sources */ = {isa = PBXBuildFile; fileRef = 20D6410027C1A938009B8159 /* cstring.c */; };
+		20D6410327C281E7009B8159 /* math.c in Sources */ = {isa = PBXBuildFile; fileRef = 20D6410227C281E7009B8159 /* math.c */; };
+		20D6410627C284BD009B8159 /* conversion_float.c in Sources */ = {isa = PBXBuildFile; fileRef = 20D6410527C284BD009B8159 /* conversion_float.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -66,6 +68,11 @@
 		20D640FD27C1A237009B8159 /* conversion_integer.grph */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = conversion_integer.grph; sourceTree = "<group>"; };
 		20D640FE27C1A259009B8159 /* conversion_integer.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = conversion_integer.c; sourceTree = "<group>"; };
 		20D6410027C1A938009B8159 /* cstring.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cstring.c; sourceTree = "<group>"; };
+		20D6410227C281E7009B8159 /* math.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = math.c; sourceTree = "<group>"; };
+		20D6410427C2836D009B8159 /* math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = math.h; sourceTree = "<group>"; };
+		20D6410527C284BD009B8159 /* conversion_float.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = conversion_float.c; sourceTree = "<group>"; };
+		20D6410727C28522009B8159 /* conversion_float.grph */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = conversion_float.grph; sourceTree = "<group>"; };
+		20D6410827C28796009B8159 /* math.grph */ = {isa = PBXFileReference; lastKnownFileType = text; path = math.grph; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +114,8 @@
 				20D6410027C1A938009B8159 /* cstring.c */,
 				20A04DFD27A1BB74002B11AB /* standard.c */,
 				208DFD9A27B988BC0048A10D /* standard.grph */,
+				20D6410227C281E7009B8159 /* math.c */,
+				20D6410827C28796009B8159 /* math.grph */,
 				20A04E0A27A323CD002B11AB /* stdio.c */,
 				2090E2D027BD724B00DE1670 /* strutils.c */,
 				208DFD9927B9525D0048A10D /* strutils.grph */,
@@ -115,6 +124,8 @@
 				2090E2CE27BD60D900DE1670 /* conversion_string.grph */,
 				20D640FE27C1A259009B8159 /* conversion_integer.c */,
 				20D640FD27C1A237009B8159 /* conversion_integer.grph */,
+				20D6410527C284BD009B8159 /* conversion_float.c */,
+				20D6410727C28522009B8159 /* conversion_float.grph */,
 				20D640F827C11865009B8159 /* op_typeid_equal.c */,
 			);
 			path = libgrph;
@@ -145,6 +156,7 @@
 		20A04E0F27A40D37002B11AB /* ns */ = {
 			isa = PBXGroup;
 			children = (
+				20D6410427C2836D009B8159 /* math.h */,
 				2090E2CF27BD71C500DE1670 /* strutils.h */,
 				20A04E1027A40D37002B11AB /* standard.h */,
 				20A04E1127A40D37002B11AB /* stdio.h */,
@@ -271,8 +283,10 @@
 				20A04DFE27A1BB74002B11AB /* standard.c in Sources */,
 				20D640FF27C1A259009B8159 /* conversion_integer.c in Sources */,
 				2090E2D127BD724B00DE1670 /* strutils.c in Sources */,
+				20D6410627C284BD009B8159 /* conversion_float.c in Sources */,
 				20A69D3827A8175D00014B26 /* test_strings.c in Sources */,
 				20A04E0B27A323CD002B11AB /* stdio.c in Sources */,
+				20D6410327C281E7009B8159 /* math.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

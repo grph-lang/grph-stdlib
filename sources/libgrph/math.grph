@@ -1,0 +1,21 @@
+//
+//  math.c
+//  GRPH stdlib - libgrph
+//
+//  Created by Emil Pedersen on 20/02/2022.
+//
+//  This Source Code Form is subject to the terms of the Mozilla Public
+//  License, v. 2.0. If a copy of the MPL was not distributed with this
+//  file, You can obtain one at https://mozilla.org/MPL/2.0/.
+//
+
+#requires GRPH 1.11
+#compiler strict true
+
+float sqrt[float x] = #external
+float cbrt[float x] = #external
+float pow[float x, float y] = #external
+
+float grph_math_sqrt[num number] = sqrt[[number as float]]
+float grph_math_cbrt[num number] = cbrt[[number as float]]
+float grph_math_pow[num number, num power] = pow[[number as float] [power as float]]
