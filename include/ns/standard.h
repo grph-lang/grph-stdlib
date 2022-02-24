@@ -14,7 +14,8 @@
 
 #include "grph_types.h"
 
-void grph_standard_assert(grph_boolean_t precondition, grph_string_t message);
+optional_integer_t grph_standard_stringToInteger(grph_string_t string);
+optional_float_t grph_standard_stringToFloat(grph_string_t string);
 grph_float_t grph_standard_getXForPos(grph_pos_t pos);
 grph_float_t grph_standard_getYForPos(grph_pos_t pos);
 grph_rotation_t grph_standard_integerToRotation(grph_integer_t integer);

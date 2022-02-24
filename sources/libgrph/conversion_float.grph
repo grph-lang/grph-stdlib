@@ -12,8 +12,8 @@
 #requires GRPH 1.11
 #compiler strict true
 
-#function float integer_to_float[integer number] = #external
-#function float? string_to_float[string number] = #external
+float integer_to_float[integer number] = #external
+float? string_to_float[string number] = #external
 
 #function float? grphas_float[mixed val] = null
 	#if val is integer

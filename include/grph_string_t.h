@@ -47,7 +47,7 @@ static inline bool grph_string_is_small(grph_string_t str)
 
 /// Returns the length of a string
 /// @param str the string
-static inline uint64_t grph_string_get_length(grph_string_t str)
+static inline int64_t grph_string_get_length(grph_string_t str)
 {
     return str.metadata & ~(0b111ULL << 61);
 }

@@ -15,13 +15,12 @@
 #include "grph_types.h"
 
 grph_integer_t grph_strutils_getStringLength(grph_string_t string);
-grph_string_t grph_strutils_substring(grph_string_t string, grph_integer_t start, grph_integer_t end);
+grph_string_t grph_strutils_substring(grph_string_t string, grph_integer_t start, optional_integer_t end);
 grph_integer_t grph_strutils_indexInString(grph_string_t string, grph_string_t substring);
 grph_integer_t grph_strutils_lastIndexInString(grph_string_t string, grph_string_t substring);
 grph_boolean_t grph_strutils_stringContains(grph_string_t string, grph_string_t substring);
 grph_integer_t grph_strutils_charToInteger(grph_string_t character);
 grph_string_t grph_strutils_integerToChar(grph_integer_t codePoint);
-grph_string_t grph_strutils_setStringLength(grph_string_t string, grph_integer_t length, grph_string_t fill);
 
 #endif /* GRPH_NS_STRUTILS_H */
 

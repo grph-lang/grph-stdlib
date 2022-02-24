@@ -16,8 +16,6 @@
 #include <stdio.h>
 #include <errno.h>
 
-typedef grph_optional_t(grph_integer_t) optional_integer_t;
-
 grph_integer_t float_to_integer(grph_float_t number)
 {
     return (grph_integer_t) number;

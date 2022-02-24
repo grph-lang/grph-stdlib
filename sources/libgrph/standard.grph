@@ -10,6 +10,10 @@
 //
 
 #requires GRPH 1.11
+#compiler strictest true
 
-#function float grph_standard_getXForPos[pos p] = p.x
-#function float grph_standard_getYForPos[pos p] = p.y
+integer? grph_standard_stringToInteger[string string] = string as? integer
+float? grph_standard_stringToFloat[string string] = string as? float
+
+float grph_standard_getXForPos[pos p] = p.x
+float grph_standard_getYForPos[pos p] = p.y

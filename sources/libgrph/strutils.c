@@ -65,13 +65,17 @@ grph_boolean_t grph_strutils_stringContains(grph_string_t string, grph_string_t 
     return grph_strutils_indexInString(string, substring) >= 0;
 }
 
-grph_string_t grph_strutils_substring(grph_string_t string, grph_integer_t start, grph_integer_t end)
+grph_string_t grph_strutils_substring(grph_string_t string, grph_integer_t start, optional_integer_t _end)
 {
-    if (start > end)
+    grph_integer_t end = _end.exists ? _end.value : grph_string_get_length(string);
+    if (start > end || start < 0 || end > grph_string_get_length(string))
         abort(); // TODO: throw
     if (start == 0) {
         // increase refcount
-        return (grph_string_t) { ((0b111ULL << 61) & string.metadata) | end, string.buffer };
+        if (end == grph_string_get_length(string)) {
+            return string;
+        }
+        return (grph_string_t) { ((0b101ULL << 61) & string.metadata) | end, string.buffer };
     }
     char *data = grph_string_get_data(&string);
     if (end - start <= 8) {

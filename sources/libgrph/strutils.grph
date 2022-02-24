@@ -10,7 +10,8 @@
 //
 
 #requires GRPH 1.11
+#compiler strictest true
 
 #import strutils
 
-#function integer grph_strutils_getStringLength[string str] = str.length
+integer grph_strutils_getStringLength[string str] = str.length

@@ -10,7 +10,7 @@
 //
 
 #requires GRPH 1.11
-#compiler strict true
+#compiler strictest true
 
 float sqrt[float x] = #external
 float cbrt[float x] = #external
