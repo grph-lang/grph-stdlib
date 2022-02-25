@@ -37,18 +37,3 @@ size_t grphop_typeid_len(typeid_t type)
         return 1;
     }
 }
-
-grph_boolean_t grphop_typeid_equal(typeid_t lhs, typeid_t rhs)
-{
-    size_t llen = grphop_typeid_len(lhs);
-    size_t rlen = grphop_typeid_len(rhs);
-    
-    if (llen != rlen)
-        return false;
-    for (size_t i = 0; i < llen; i++) {
-        if (lhs[i] != rhs[i]) {
-            return false;
-        }
-    }
-    return true;
-}
