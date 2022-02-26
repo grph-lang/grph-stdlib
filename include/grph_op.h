@@ -15,7 +15,6 @@
 #include "grph_types.h"
 #include <stddef.h>
 
-size_t grphop_typeid_len(typeid_t type);
-grph_boolean_t grphop_typeid_equal(typeid_t lhs, typeid_t rhs);
+grph_string_t grphop_concat_strings(grph_string_t lhs, grph_string_t rhs);
 
 #endif /* GRPH_OP_H */

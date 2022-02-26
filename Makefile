@@ -60,10 +60,10 @@ tests_run:	clean_cov $(TEST)
 	$(CC) -Wall -Wextra -c -o $@ $< -Iinclude -fPIC
 
 %.g.o:	sources/libgrph/%.c
-	$(CC) -Wall -Wextra --coverage -c -o $@ $< -Iinclude
+	$(CC) -Wall -Wextra -g --coverage -c -o $@ $< -Iinclude
 
 %.t.o:	tests/%.c
-	$(CC) -Wall -Wextra -c -o $@ $< -Iinclude  $(OTHER_CFLAGS)
+	$(CC) -Wall -Wextra -g -c -o $@ $< -Iinclude  $(OTHER_CFLAGS)
 
 $(GRPH_STATIC):	$(GRPH_OBJ)
 	$(STATIC_CMD) $(GRPH_STATIC) $(GRPH_OBJ)

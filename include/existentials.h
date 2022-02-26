@@ -18,8 +18,8 @@
 #define SPECIAL_TYPEID(id, name) \
     EXISTENTIAL_ID_##name = id,
 
-typedef enum {
+typedef enum __attribute__((packed)) {
     #include "existentials.inc"
-} existential_type_id_t;
+} typeid_t;
 
 #endif /* EXISTENTIALS_H */
