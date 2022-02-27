@@ -20,15 +20,15 @@ TEST_OBJ	=	$(GRPH_SRC:sources/libgrph/%.c=%.g.o) \
 				$(GRPH_BS_SRC:sources/libgrph/%.grph=%.bs.o) \
 				$(TEST_SRC:tests/%.c=%.t.o)
 
-OS			?=	$(shell uname)
+OS_UNAME		?=	$(shell uname)
 
 GRPH_STATIC	=	libgrph.a
 
 CC			?=	gcc
 
-ifeq ($(OS),Darwin)
+ifeq ($(OS_UNAME),Darwin)
 	GRPH_DYN	=	libgrph.dylib
-	DYN_CMD		=	$(CC) -dynamiclib
+	DYN_CMD		=	$(CC) -dynamiclib -Wl,-U,_grph_entrypoint
 	INSTALL_CMD	=	cp -c
 	POSTINSTALL_CMD	=
 else

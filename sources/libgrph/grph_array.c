@@ -90,7 +90,7 @@ void grpharr_remove(grph_array_t *array, grph_integer_t index, void *elem_out)
     array->count--;
 }
 
-// array{index}
+// elem = array{index}
 void grpharr_get(grph_array_t *array, grph_integer_t index, void *elem_out)
 {
     grph_integer_t elemsize = array->isa->generics[0]->vwt->instance_size;
