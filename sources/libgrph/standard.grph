@@ -12,8 +12,33 @@
 #requires GRPH 1.11
 #compiler strictest true
 
+#import stdio
+
 integer? grph_standard_stringToInteger[string string] = string as? integer
 float? grph_standard_stringToFloat[string string] = string as? float
 
 float grph_standard_getXForPos[pos p] = p.x
 float grph_standard_getYForPos[pos p] = p.y
+
+#function string do_concat[{mixed} text, string sep]
+	string total = ""
+	boolean first = true
+	#foreach elem : text
+		#if first
+			first = false
+		#else
+			total += sep
+		total += elem as string
+	#return total
+
+#function string grph_standard_concat[mixed text...]
+	#return do_concat[text ""]
+
+#function string grph_standard_toString[mixed text...]
+	#return do_concat[text " "]
+
+#function string grph_standard_log[mixed text...]
+	string result = do_concat[text " "]
+	printOut: result
+	printOut: "\n"
+	#return result
