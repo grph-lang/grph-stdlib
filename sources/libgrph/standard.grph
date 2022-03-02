@@ -42,3 +42,23 @@ float grph_standard_getYForPos[pos p] = p.y
 	printOut: result
 	printOut: "\n"
 	#return result
+
+#function {integer} grph_standard_range[integer _first, integer _last, integer _step = 1]
+	integer first = _first
+	integer last = _last
+	integer step = _step
+	// #if step == 0
+	// 	#throw InvalidArgumentException("step cannot be 0")
+	#if step < 0
+		step = -step
+	#if first > last
+		step = -step
+
+	{integer} result = ()
+	integer i = first
+
+	#while [i <= last && step > 0] || [i >= last && step < 0]
+		result{+} = i
+		i += step
+
+	#return result

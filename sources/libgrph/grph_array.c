@@ -24,7 +24,7 @@ grph_array_t *grpharr_create(struct typetable *type, grph_integer_t capacity)
     box->isa = type;
     box->count = 0;
     box->capacity = capacity > 16 ? capacity : 16;
-    box->buffer = malloc(capacity * type->generics[0]->vwt->instance_size);
+    box->buffer = malloc(box->capacity * type->generics[0]->vwt->instance_size);
     return box;
 }
 
@@ -34,7 +34,7 @@ void grpharr_ensure_capacity(grph_array_t *array, grph_integer_t capacity)
     if (array->capacity < capacity) {
         grph_integer_t ideal_cap = array->capacity * 2;
         array->capacity = capacity > ideal_cap ? capacity : ideal_cap;
-        array->buffer = realloc(array->buffer, array->capacity);
+        array->buffer = realloc(array->buffer, array->capacity * array->isa->generics[0]->vwt->instance_size);
     }
 }
 
