@@ -16,6 +16,60 @@ float sqrt[float x] = #external
 float cbrt[float x] = #external
 float pow[float x, float y] = #external
 
+float round[float x] = #external
+float floor[float x] = #external
+float ceil[float x] = #external
+
 float grph_math_sqrt[num number] = sqrt[[number as float]]
 float grph_math_cbrt[num number] = cbrt[[number as float]]
 float grph_math_pow[num number, num power] = pow[[number as float] [power as float]]
+
+integer grph_math_round[num number] = round[[number as float]] as integer
+integer grph_math_floor[num number] = floor[[number as float]] as integer
+integer grph_math_ceil[num number] = ceil[[number as float]] as integer
+
+#function float grph_math_sum[num numbers...]
+	float result = 0f
+	#foreach number : numbers
+		result += number as float
+	#return result
+
+#function float grph_math_difference[num numbers...]
+	float result = numbers{0-} as float
+	#foreach number : numbers
+		result -= number as float
+	#return result
+
+#function float grph_math_multiply[num numbers...]
+	float result = 1f
+	#foreach number : numbers
+		result *= number as float
+	#return result
+
+#function float grph_math_divide[num numbers...]
+	float result = numbers{0-} as float
+	#foreach number : numbers
+		result /= number as float
+	#return result
+
+#function float grph_math_modulo[num numbers...]
+	float result = numbers{0-} as float
+	#foreach number : numbers
+		result %= number as float
+	#return result
+
+#function float grph_math_min[num numbers...]
+	float result = float.POSITIVE_INFINITY
+	#foreach _number : numbers
+		float number = _number as float
+		#if number < result
+			result = number
+	#return result
+
+#function float grph_math_max[num numbers...]
+	float result = float.NEGATIVE_INFINITY
+	#foreach _number : numbers
+		float number = _number as float
+		#if number > result
+			result = number
+	#return result
