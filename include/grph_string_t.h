@@ -16,6 +16,10 @@
 
 #include <stdbool.h>
 
+#define STRING_IMMORTAL (0b100ULL << 61)
+#define STRING_NIL_TERMINATED (0b010ULL << 61)
+#define STRING_SMALL (0b001ULL << 61)
+
 /// Returns true if the string is immortal, false otherwise.
 /// An immortal string cannot be freed, and as such is not boxed:
 /// it is stored in a readonly static segment.

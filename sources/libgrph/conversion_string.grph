@@ -16,6 +16,12 @@
 
 string int_to_string[integer number] = #external
 string float_to_string[float number] = #external
+string type_to_string[type type] = #external
+
+boolean mixed_is_array[mixed value] = #external
+string mixed_array_elem_to_string[mixed value, int index] = #external
+integer mixed_array_length[mixed value] = #external
+type mixed_array_elem_type[mixed value] = #external
 
 #function string? grphas_string[mixed val] = null
 	#if val is void
@@ -31,3 +37,22 @@ string float_to_string[float number] = #external
 		#return float_to_string[[val as! float]]
 	#elseif val is string
 		#return val as! string
+	#elseif val is type
+		#return type_to_string[[val as! type]]
+	#elseif mixed_is_array[val]
+		string s = "<" + type_to_string[mixed_array_elem_type[val]] + ">{"
+		int i = 0
+		int len = mixed_array_length[val]
+		#while i < len
+			#if i != 0
+				s += ", "
+			s += mixed_array_elem_to_string[val i]
+			i += 1
+		#return s + "}"
+
+#function string grphas_string_forced[mixed val]
+	string? opt = grphas_string[val]
+	#if opt == null
+		#return ""
+	#else
+		#return opt!

@@ -30,6 +30,6 @@ struct typetable {
     struct typetable *generics[0];
 };
 
-#define TYPETABLE_TYPEID_CHAR(tt) ((existential_type_id_t) (tt).type_name[-1])
+#define TYPETABLE_TYPEID_CHAR(tt) ((typeid_t) (tt)->type_name[-1])
 
 #endif /* typetable_h */

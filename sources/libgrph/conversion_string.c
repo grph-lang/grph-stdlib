@@ -12,6 +12,9 @@
 #include "grph_types.h"
 #include "grph_string_t.h"
 #include "grph_op.h"
+#include "existentials.h"
+#include "typetable.h"
+#include "grph_array.h"
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -29,6 +32,49 @@ grph_string_t float_to_string(grph_float_t number)
     char *box = malloc(32); // idk, swift uses 32 bytes
     grph_integer_t len = snprintf(box, 32, "%f", number);
     return (grph_string_t) { (0b010ULL << 61) | len, box };
+}
+
+grph_string_t grphas_string_forced(struct grph_existential *val);
+
+grph_integer_t mixed_array_length(struct grph_existential *value)
+{
+    grph_array_t *array = value->data[0];
+    
+    return array->count;
+}
+
+grph_string_t mixed_array_elem_to_string(struct grph_existential *value, int index)
+{
+    grph_array_t *array = value->data[0];
+    size_t elemsize = array->isa->generics[0]->vwt->instance_size;
+    void *elem = alloca(elemsize);
+
+    grpharr_get(value->data[0], index, elem);
+    struct grph_existential ext;
+    ext.type = array->isa->generics[0];
+    if (elemsize > sizeof(value->data)) {
+        // TODO: box should be refcounted
+        ext.data[0] = &elem;
+    } else {
+        memcpy(&ext.data, elem, elemsize);
+    }
+    return grphas_string_forced(&ext);
+}
+
+bool mixed_is_array(struct grph_existential *value)
+{
+    return TYPETABLE_TYPEID_CHAR(value->type) == EXISTENTIAL_ID_array;
+}
+
+struct typetable *mixed_array_elem_type(struct grph_existential *value)
+{
+    grph_array_t *array = value->data[0];
+    return array->isa->generics[0];
+}
+
+grph_string_t type_to_string(struct typetable *type)
+{
+    return (grph_string_t) { STRING_IMMORTAL | STRING_NIL_TERMINATED | strlen(type->type_name), type->type_name };
 }
 
 grph_string_t grphop_concat_strings(grph_string_t lhs, grph_string_t rhs)
