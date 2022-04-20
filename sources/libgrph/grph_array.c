@@ -10,6 +10,7 @@
 //
 
 #include "grph_array.h"
+#include "existentials.h"
 #include "typetable.h"
 
 #include <stdlib.h>
@@ -97,4 +98,27 @@ void grpharr_get(grph_array_t *array, grph_integer_t index, void *elem_out)
     grph_integer_t offset = index * elemsize;
     
     memcpy(elem_out, array->buffer + offset, elemsize);
+}
+
+// mixed elem = array{index} for array conversion thunks
+void grpharr_get_mixed(grph_array_t *array, grph_integer_t index, void *elem_out)
+{
+    struct typetable *elem = array->isa->generics[0];
+    size_t elemsize = elem->vwt->instance_size;
+    void *src = array->buffer + index * elemsize;
+    struct grph_existential *dest = elem_out;
+    
+    if (TYPETABLE_TYPEID_CHAR(elem) == EXISTENTIAL_ID_mixed) {
+        memcpy(dest, src, elemsize);
+        return;
+    }
+    dest->type = elem;
+    if (elemsize > sizeof(dest->data)) {
+        // TODO: box should be refcounted
+        void *copy = malloc(elemsize);
+        memcpy(copy, src, elemsize);
+        dest->data[0] = copy;
+    } else {
+        memcpy(dest->data, src, elemsize);
+    }
 }
