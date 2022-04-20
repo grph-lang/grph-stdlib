@@ -46,12 +46,15 @@ grph_integer_t mixed_array_length(struct grph_existential *value)
 grph_string_t mixed_array_elem_to_string(struct grph_existential *value, int index)
 {
     grph_array_t *array = value->data[0];
-    size_t elemsize = array->isa->generics[0]->vwt->instance_size;
+    struct typetable *elemty = array->isa->generics[0];
+    size_t elemsize = elemty->vwt->instance_size;
     void *elem = alloca(elemsize);
 
     grpharr_get(value->data[0], index, elem);
+    if (TYPETABLE_TYPEID_CHAR(elemty) == EXISTENTIAL_ID_mixed)
+        return grphas_string_forced(elem);
     struct grph_existential ext;
-    ext.type = array->isa->generics[0];
+    ext.type = elemty;
     if (elemsize > sizeof(value->data)) {
         // TODO: box should be refcounted
         ext.data[0] = &elem;

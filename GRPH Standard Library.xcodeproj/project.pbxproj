@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		201620EC27D436FC0002CC15 /* op_equal.c in Sources */ = {isa = PBXBuildFile; fileRef = 201620EB27D436FC0002CC15 /* op_equal.c */; };
 		208DFD9727B83E3F0048A10D /* fields.c in Sources */ = {isa = PBXBuildFile; fileRef = 208DFD9627B83E3F0048A10D /* fields.c */; };
 		2090E2CD27BAC2BA00DE1670 /* conversion_string.c in Sources */ = {isa = PBXBuildFile; fileRef = 2090E2CC27BAC2B600DE1670 /* conversion_string.c */; };
 		2090E2D127BD724B00DE1670 /* strutils.c in Sources */ = {isa = PBXBuildFile; fileRef = 2090E2D027BD724B00DE1670 /* strutils.c */; };
@@ -36,6 +37,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		201620EA27D3E7990002CC15 /* op_equal.grph */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = op_equal.grph; sourceTree = "<group>"; };
+		201620EB27D436FC0002CC15 /* op_equal.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = op_equal.c; sourceTree = "<group>"; };
 		208DFD9427B32B3D0048A10D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		208DFD9527B83E3F0048A10D /* grph_fields.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = grph_fields.h; sourceTree = "<group>"; };
 		208DFD9627B83E3F0048A10D /* fields.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = fields.c; sourceTree = "<group>"; };
@@ -128,6 +131,8 @@
 				20D6410527C284BD009B8159 /* conversion_float.c */,
 				20D6410727C28522009B8159 /* conversion_float.grph */,
 				20AABB2527CABB230049634C /* grph_array.c */,
+				201620EB27D436FC0002CC15 /* op_equal.c */,
+				201620EA27D3E7990002CC15 /* op_equal.grph */,
 				20AABB2727CBE37F0049634C /* main.c */,
 				20AABB2927CBE5020049634C /* main.grph */,
 			);
@@ -281,6 +286,7 @@
 				20D6410127C1A938009B8159 /* cstring.c in Sources */,
 				2090E2CD27BAC2BA00DE1670 /* conversion_string.c in Sources */,
 				20A04DFE27A1BB74002B11AB /* standard.c in Sources */,
+				201620EC27D436FC0002CC15 /* op_equal.c in Sources */,
 				20AABB2827CBE37F0049634C /* main.c in Sources */,
 				20D640FF27C1A259009B8159 /* conversion_integer.c in Sources */,
 				2090E2D127BD724B00DE1670 /* strutils.c in Sources */,
