@@ -51,7 +51,7 @@ grph_string_t mixed_array_elem_to_string(struct grph_existential *value, int ind
     void *elem = alloca(elemsize);
 
     grpharr_get(value->data[0], index, elem);
-    if (TYPETABLE_TYPEID_CHAR(elemty) == EXISTENTIAL_ID_mixed)
+    if (TYPE_IS_EXISTENTIAL(elemty))
         return grphas_string_forced(elem);
     struct grph_existential ext;
     ext.type = elemty;

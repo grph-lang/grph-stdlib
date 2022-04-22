@@ -31,5 +31,6 @@ struct typetable {
 };
 
 #define TYPETABLE_TYPEID_CHAR(tt) ((typeid_t) (tt)->type_name[-1])
+#define TYPE_IS_EXISTENTIAL(tt) (TYPETABLE_TYPEID_CHAR(tt) == EXISTENTIAL_ID_mixed || TYPETABLE_TYPEID_CHAR(tt) == EXISTENTIAL_ID_multi_or_ext)
 
 #endif /* typetable_h */

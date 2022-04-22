@@ -53,5 +53,7 @@ SPECIAL_TYPEID(131, funcref)
 // They are valid in nested existentials though (ex: mixed?)
 
 /// Note: num is defined as float|integer, paint is color|linear|radial
-SPECIAL_TYPEID(254, multi_or)
+SPECIAL_TYPEID(254, multi_or_ref)
+/// Note: num is defined as float|integer, paint is color|linear|radial
+SPECIAL_TYPEID(254, multi_or_ext)
 SPECIAL_TYPEID(255, mixed)

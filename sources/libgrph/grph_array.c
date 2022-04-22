@@ -108,7 +108,7 @@ void grpharr_get_mixed(grph_array_t *array, grph_integer_t index, void *elem_out
     void *src = array->buffer + index * elemsize;
     struct grph_existential *dest = elem_out;
     
-    if (TYPETABLE_TYPEID_CHAR(elem) == EXISTENTIAL_ID_mixed) {
+    if (TYPE_IS_EXISTENTIAL(elem)) {
         memcpy(dest, src, elemsize);
         return;
     }

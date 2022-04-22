@@ -1,0 +1,36 @@
+//
+//  conversion_num.grph
+//  GRPH stdlib - libgrph
+//
+//  Created by Emil Pedersen on 20/04/2022.
+//
+//  This Source Code Form is subject to the terms of the Mozilla Public
+//  License, v. 2.0. If a copy of the MPL was not distributed with this
+//  file, You can obtain one at https://mozilla.org/MPL/2.0/.
+//
+
+#requires GRPH 1.11
+#compiler strictest true
+
+#function num? grphas_num[mixed val] = null
+	#if val is integer
+		num n = val as! integer
+		#return (n)
+	#elseif val is float
+		num n = val as! float
+		#return (n)
+	#elseif val is rotation
+		num n = val as! rotation as float
+		#return (n)
+	#elseif val is string
+		integer? i = val as? integer
+		#if i != null
+			num n = i!
+			#return (n)
+		float? f = val as? float
+		#if f != null
+			num n = f!
+			#return (n)
+	#elseif val is boolean
+		num n = val as integer
+		#return (n)
