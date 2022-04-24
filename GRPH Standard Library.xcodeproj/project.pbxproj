@@ -17,6 +17,8 @@
 		20A69D3827A8175D00014B26 /* test_strings.c in Sources */ = {isa = PBXBuildFile; fileRef = 20A69D3327A8171B00014B26 /* test_strings.c */; };
 		20AABB2627CABB230049634C /* grph_array.c in Sources */ = {isa = PBXBuildFile; fileRef = 20AABB2527CABB230049634C /* grph_array.c */; };
 		20AABB2827CBE37F0049634C /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 20AABB2727CBE37F0049634C /* main.c */; };
+		20BCAD9728147BB500E48507 /* vwt.c in Sources */ = {isa = PBXBuildFile; fileRef = 20BCAD9628147BB500E48507 /* vwt.c */; };
+		20BCAD9B281489E000E48507 /* box.c in Sources */ = {isa = PBXBuildFile; fileRef = 20BCAD9A281489E000E48507 /* box.c */; };
 		20D640F527C003E6009B8159 /* test_char.c in Sources */ = {isa = PBXBuildFile; fileRef = 20D640F427C003E6009B8159 /* test_char.c */; };
 		20D640FF27C1A259009B8159 /* conversion_integer.c in Sources */ = {isa = PBXBuildFile; fileRef = 20D640FE27C1A259009B8159 /* conversion_integer.c */; };
 		20D6410127C1A938009B8159 /* cstring.c in Sources */ = {isa = PBXBuildFile; fileRef = 20D6410027C1A938009B8159 /* cstring.c */; };
@@ -68,6 +70,11 @@
 		20AABB2727CBE37F0049634C /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		20AABB2927CBE5020049634C /* main.grph */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.grph; sourceTree = "<group>"; };
 		20BCAD942810844000E48507 /* conversion_num.grph */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = conversion_num.grph; sourceTree = "<group>"; };
+		20BCAD9628147BB500E48507 /* vwt.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vwt.c; sourceTree = "<group>"; };
+		20BCAD9828147E8200E48507 /* vwt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vwt.h; sourceTree = "<group>"; };
+		20BCAD992814898000E48507 /* box.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = box.h; sourceTree = "<group>"; };
+		20BCAD9A281489E000E48507 /* box.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = box.c; sourceTree = "<group>"; };
+		20BCAD9C281562DC00E48507 /* ownership.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ownership.h; sourceTree = "<group>"; };
 		20D640F427C003E6009B8159 /* test_char.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = test_char.c; sourceTree = "<group>"; };
 		20D640FC27C12439009B8159 /* grph_op.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = grph_op.h; sourceTree = "<group>"; };
 		20D640FD27C1A237009B8159 /* conversion_integer.grph */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = conversion_integer.grph; sourceTree = "<group>"; };
@@ -117,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				20D6410027C1A938009B8159 /* cstring.c */,
+				20BCAD9A281489E000E48507 /* box.c */,
 				20A04DFD27A1BB74002B11AB /* standard.c */,
 				208DFD9A27B988BC0048A10D /* standard.grph */,
 				20D6410227C281E7009B8159 /* math.c */,
@@ -137,6 +145,7 @@
 				201620EA27D3E7990002CC15 /* op_equal.grph */,
 				20AABB2727CBE37F0049634C /* main.c */,
 				20AABB2927CBE5020049634C /* main.grph */,
+				20BCAD9628147BB500E48507 /* vwt.c */,
 			);
 			path = libgrph;
 			sourceTree = "<group>";
@@ -161,6 +170,9 @@
 				20D640FC27C12439009B8159 /* grph_op.h */,
 				20AABB2427CABB230049634C /* grph_array.h */,
 				20AABB2327C99EFE0049634C /* typetable.h */,
+				20BCAD9828147E8200E48507 /* vwt.h */,
+				20BCAD9C281562DC00E48507 /* ownership.h */,
+				20BCAD992814898000E48507 /* box.h */,
 			);
 			path = include;
 			sourceTree = "<group>";
@@ -286,9 +298,11 @@
 				20D640F527C003E6009B8159 /* test_char.c in Sources */,
 				208DFD9727B83E3F0048A10D /* fields.c in Sources */,
 				20D6410127C1A938009B8159 /* cstring.c in Sources */,
+				20BCAD9B281489E000E48507 /* box.c in Sources */,
 				2090E2CD27BAC2BA00DE1670 /* conversion_string.c in Sources */,
 				20A04DFE27A1BB74002B11AB /* standard.c in Sources */,
 				201620EC27D436FC0002CC15 /* op_equal.c in Sources */,
+				20BCAD9728147BB500E48507 /* vwt.c in Sources */,
 				20AABB2827CBE37F0049634C /* main.c in Sources */,
 				20D640FF27C1A259009B8159 /* conversion_integer.c in Sources */,
 				2090E2D127BD724B00DE1670 /* strutils.c in Sources */,

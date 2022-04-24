@@ -52,7 +52,6 @@ SPECIAL_TYPEID(131, funcref)
 // These cannot be instanciated, but they can appear as generics or at the right hand side of a cast
 // They are valid in nested existentials though (ex: mixed?)
 
-/// Note: num is defined as float|integer, paint is color|linear|radial
 SPECIAL_TYPEID(254, multi_or_ref)
 /// Note: num is defined as float|integer, paint is color|linear|radial
 SPECIAL_TYPEID(254, multi_or_ext)

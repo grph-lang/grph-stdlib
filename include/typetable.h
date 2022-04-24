@@ -14,9 +14,16 @@
 
 #include <stdint.h>
 
+struct typetable;
+typedef void copy_func(void *restrict dest, void *restrict src, struct typetable *restrict type);
+typedef void destroy_func(void *restrict value, struct typetable *restrict type);
+
 struct vwt {
     /// The size of an instance of this type
     uint64_t instance_size;
+    uint64_t alignment;
+    copy_func *copy;
+    destroy_func *destroy;
 };
 
 struct typetable {

@@ -12,6 +12,8 @@
 #include "grph_array.h"
 #include "existentials.h"
 #include "typetable.h"
+#include "box.h"
+#include "ownership.h"
 
 #include <stdlib.h>
 #include <stdarg.h>
@@ -19,9 +21,8 @@
 
 grph_array_t *grpharr_create(struct typetable *type, grph_integer_t capacity)
 {
-    grph_array_t *box = malloc(sizeof(grph_array_t));
+    grph_array_t *box = alloc_box(sizeof(grph_array_t));
     
-    box->box_refcount = 0;
     box->isa = type;
     box->count = 0;
     box->capacity = capacity > 16 ? capacity : 16;
@@ -40,7 +41,7 @@ void grpharr_ensure_capacity(grph_array_t *array, grph_integer_t capacity)
 }
 
 // array{+} = elem
-void grpharr_append(grph_array_t *array, void *elem)
+void grpharr_append(grph_array_t *array, grph_owned void *elem)
 {
     grph_integer_t elemsize = array->isa->generics[0]->vwt->instance_size;
     
@@ -50,7 +51,7 @@ void grpharr_append(grph_array_t *array, void *elem)
 }
 
 // elem = array{-}
-void grpharr_pop(grph_array_t *array, void *elem_out)
+void grpharr_pop(grph_array_t *array, grph_owned void *elem_out)
 {
     grph_integer_t elemsize = array->isa->generics[0]->vwt->instance_size;
     
@@ -59,7 +60,7 @@ void grpharr_pop(grph_array_t *array, void *elem_out)
 }
 
 // array{index+} = elem
-void grpharr_insert(grph_array_t *array, grph_integer_t index, void *elem)
+void grpharr_insert(grph_array_t *array, grph_integer_t index, grph_owned void *elem)
 {
     grph_integer_t elemsize = array->isa->generics[0]->vwt->instance_size;
     grph_integer_t offset = index * elemsize;
@@ -71,17 +72,18 @@ void grpharr_insert(grph_array_t *array, grph_integer_t index, void *elem)
 }
 
 // array{index} = elem
-void grpharr_set(grph_array_t *array, grph_integer_t index, void *elem)
+void grpharr_set(grph_array_t *array, grph_integer_t index, grph_owned void *elem)
 {
-    grph_integer_t elemsize = array->isa->generics[0]->vwt->instance_size;
+    struct typetable *elemtype = array->isa->generics[0];
+    grph_integer_t elemsize = elemtype->vwt->instance_size;
     grph_integer_t offset = index * elemsize;
     
-    // TODO: release previous value
+    elemtype->vwt->destroy(array->buffer + offset, elemtype);
     memcpy(array->buffer + offset, elem, elemsize);
 }
 
 // elem = array{index-}
-void grpharr_remove(grph_array_t *array, grph_integer_t index, void *elem_out)
+void grpharr_remove(grph_array_t *array, grph_integer_t index, grph_owned void *elem_out)
 {
     grph_integer_t elemsize = array->isa->generics[0]->vwt->instance_size;
     grph_integer_t offset = index * elemsize;
@@ -92,16 +94,17 @@ void grpharr_remove(grph_array_t *array, grph_integer_t index, void *elem_out)
 }
 
 // elem = array{index}
-void grpharr_get(grph_array_t *array, grph_integer_t index, void *elem_out)
+void grpharr_get(grph_array_t *array, grph_integer_t index, grph_owned void *elem_out)
 {
-    grph_integer_t elemsize = array->isa->generics[0]->vwt->instance_size;
+    struct typetable *elemtype = array->isa->generics[0];
+    grph_integer_t elemsize = elemtype->vwt->instance_size;
     grph_integer_t offset = index * elemsize;
     
-    memcpy(elem_out, array->buffer + offset, elemsize);
+    elemtype->vwt->copy(elem_out, array->buffer + offset, elemtype);
 }
 
 // mixed elem = array{index} for array conversion thunks
-void grpharr_get_mixed(grph_array_t *array, grph_integer_t index, void *elem_out)
+void grpharr_get_mixed(grph_array_t *array, grph_integer_t index, grph_owned void *elem_out)
 {
     struct typetable *elem = array->isa->generics[0];
     size_t elemsize = elem->vwt->instance_size;
@@ -109,16 +112,32 @@ void grpharr_get_mixed(grph_array_t *array, grph_integer_t index, void *elem_out
     struct grph_existential *dest = elem_out;
     
     if (TYPE_IS_EXISTENTIAL(elem)) {
-        memcpy(dest, src, elemsize);
+        elem->vwt->copy(dest, src, elem);
         return;
     }
     dest->type = elem;
     if (elemsize > sizeof(dest->data)) {
         // TODO: box should be refcounted
         void *copy = malloc(elemsize);
-        memcpy(copy, src, elemsize);
+        elem->vwt->copy(copy, src, elem);
         dest->data[0] = copy;
     } else {
-        memcpy(dest->data, src, elemsize);
+        elem->vwt->copy(dest->data, src, elem);
+    }
+}
+
+void grphvwt_release_array(void *_value, struct typetable *type)
+{
+    (void) type;
+    grph_array_t *array = *(grph_array_t **) _value;
+    struct typetable *elem = array->isa->generics[0];
+    size_t elemsize = elem->vwt->instance_size;
+    
+    if (release_box(array)) {
+        for (grph_integer_t i = 0; i < array->count; i++) {
+            elem->vwt->destroy(array->buffer + elemsize * i, elem);
+        }
+        free(array->buffer);
+        dealloc_box(array);
     }
 }

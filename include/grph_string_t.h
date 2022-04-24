@@ -13,6 +13,7 @@
 #define GRPH_STRING_T_H
 
 #include "grph_types.h"
+#include "box.h"
 
 #include <stdbool.h>
 
@@ -66,6 +67,12 @@ static inline char *grph_string_get_data(grph_string_t *str)
     if (grph_string_is_small(*str))
         return (char *) &str->buffer;
     return str->buffer; // assume immortal, boxes aren't implemented
+}
+
+static inline void grph_string_increase_refcount(grph_string_t *str)
+{
+    if (!grph_string_is_immortal(*str) && !grph_string_is_small(*str))
+        retain_box(str->buffer);
 }
 
 

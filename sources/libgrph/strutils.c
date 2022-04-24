@@ -13,6 +13,7 @@
 
 #include "grph_types.h"
 #include "grph_string_t.h"
+#include "box.h"
 
 #include <unistd.h>
 #include <stdbool.h>
@@ -71,7 +72,7 @@ grph_string_t grph_strutils_substring(grph_string_t string, grph_integer_t start
     if (start > end || start < 0 || end > grph_string_get_length(string))
         abort(); // TODO: throw
     if (start == 0) {
-        // increase refcount
+        grph_string_increase_refcount(&string);
         if (end == grph_string_get_length(string)) {
             return string;
         }
@@ -85,7 +86,7 @@ grph_string_t grph_strutils_substring(grph_string_t string, grph_integer_t start
         }
         return (grph_string_t) { (0b101ULL << 61) | ((end - start < 8) ? (0b010ULL << 61) : 0) | (end - start), (void *) result };
     }
-    char *cpy = malloc(end - start + 1);
+    char *cpy = alloc_box(end - start + 1);
     memcpy(cpy, data + start, end - start);
     cpy[end - start] = 0;
     return (grph_string_t) { (0b010ULL << 61) | (end - start), cpy };

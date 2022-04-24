@@ -15,8 +15,6 @@
 #include "grph_types.h"
 
 struct {
-    // as all boxes
-    uint64_t box_refcount;
     // as all reference types
     struct typetable *isa;
     
