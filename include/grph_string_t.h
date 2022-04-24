@@ -66,7 +66,7 @@ static inline char *grph_string_get_data(grph_string_t *str)
 {
     if (grph_string_is_small(*str))
         return (char *) &str->buffer;
-    return str->buffer; // assume immortal, boxes aren't implemented
+    return str->buffer;
 }
 
 static inline void grph_string_increase_refcount(grph_string_t *str)

@@ -16,6 +16,7 @@
 #include "typetable.h"
 #include "grph_array.h"
 #include "box.h"
+#include "vwt.h"
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -50,10 +51,15 @@ grph_string_t mixed_array_elem_to_string(struct grph_existential *value, int ind
     struct typetable *elemty = array->isa->generics[0];
     size_t elemsize = elemty->vwt->instance_size;
     void *elem = alloca(elemsize);
+    grph_string_t ret;
 
+    // get a copy
     grpharr_get(value->data[0], index, elem);
-    if (TYPE_IS_EXISTENTIAL(elemty))
-        return grphas_string_forced(elem);
+    if (TYPE_IS_EXISTENTIAL(elemty)) {
+        ret = grphas_string_forced(elem);
+        grphvwt_destroy_mixed(elem, NULL);
+        return ret;
+    }
     struct grph_existential ext;
     ext.type = elemty;
     if (elemsize > sizeof(value->data)) {
@@ -62,7 +68,9 @@ grph_string_t mixed_array_elem_to_string(struct grph_existential *value, int ind
     } else {
         memcpy(&ext.data, elem, elemsize);
     }
-    return grphas_string_forced(&ext);
+    ret = grphas_string_forced(&ext);
+    grphvwt_destroy_mixed(&ext, NULL);
+    return ret;
 }
 
 bool mixed_is_array(struct grph_existential *value)

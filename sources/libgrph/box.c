@@ -20,6 +20,9 @@ void *alloc_box(size_t size)
 {
     // register sized refcount to avoid most alignment issues (we dont use int128)
     size_t *box = malloc(size + sizeof(size_t));
+#ifdef DEBUG_BOX
+    fprintf(stderr, "%p: alloc\n", box + 1);
+#endif
     box[0] = 0;
     return box + 1;
 }
@@ -27,16 +30,25 @@ void *alloc_box(size_t size)
 void dealloc_box(void *_box)
 {
     size_t *box = _box;
+#ifdef DEBUG_BOX
+    fprintf(stderr, "%p: dealloc\n", box);
+#endif
     free(box - 1);
 }
 
 void retain_box(void *box)
 {
+#ifdef DEBUG_BOX
+    fprintf(stderr, "%p: retain\n", box);
+#endif
     BOX_REFCOUNT(box)++;
 }
 
 bool release_box(void *box)
 {
+#ifdef DEBUG_BOX
+    fprintf(stderr, "%p: release\n", box);
+#endif
     if (BOX_REFCOUNT(box) == 0) {
         return true;
     } else {
