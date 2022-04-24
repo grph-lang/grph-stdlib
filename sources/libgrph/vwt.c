@@ -88,3 +88,30 @@ void grphvwt_release_ref(void *restrict _value, struct typetable *restrict _type
         dealloc_box(value);
     }
 }
+
+void grphvwt_copy_optional(void *restrict dest, void *restrict src, struct typetable *restrict type)
+{
+    struct typetable *elemty = type->generics[0];
+    bool *exists = src;
+    void *content = src + elemty->vwt->alignment;
+    
+    if (*exists) {
+        bool *exists_dest = dest;
+        *exists_dest = true;
+        elemty->vwt->copy(dest + elemty->vwt->alignment, content, elemty);
+    } else {
+        // trivial
+        memcpy(dest, src, type->vwt->instance_size);
+    }
+}
+
+void grphvwt_destroy_optional(void *restrict value, struct typetable *restrict type)
+{
+    struct typetable *elemty = type->generics[0];
+    bool *exists = value;
+    void *content = value + elemty->vwt->alignment;
+    
+    if (*exists) {
+        elemty->vwt->destroy(content, elemty);
+    } // else trivial
+}
