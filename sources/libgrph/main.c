@@ -10,6 +10,7 @@
 //
 
 #include "grph_array.h"
+#include "typetable.h"
 
 #include <string.h>
 
@@ -24,9 +25,10 @@ int main(int argc, char **argv)
 {
     grph_array_t *args = grpharr_create(return_string_array_typetable(), argc);
     for (int i = 0; i < argc; i++) {
-        grph_string_t converted = { (0b110 < 61) | strlen(argv[i]), argv[i] };
+        grph_string_t converted = { (0b110ULL << 61) | strlen(argv[i]), argv[i] };
         grpharr_append(args, &converted);
     }
     grphv_global_argv = args;
     grph_entrypoint();
+    grphv_global_argv->isa->vwt->destroy(&grphv_global_argv, grphv_global_argv->isa);
 }
