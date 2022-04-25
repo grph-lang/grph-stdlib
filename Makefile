@@ -13,18 +13,28 @@ GRPH_SRC	=	$(wildcard sources/libgrph/*.c)
 GRPH_BS_SRC	=	$(wildcard sources/libgrph/*.grph)
 TEST_SRC	=	$(wildcard tests/*.c)
 
-GRPH_OBJ	=	$(GRPH_SRC:sources/libgrph/%.c=%.o) \
-				$(GRPH_BS_SRC:sources/libgrph/%.grph=%.bs.o)
+GRPH_OBJ	=	$(GRPH_SRC:sources/%.c=build/%.c.o) \
+				$(GRPH_BS_SRC:sources/%.grph=build/%.grph.o)
 
-TEST_OBJ	=	$(GRPH_SRC:sources/libgrph/%.c=%.g.o) \
-				$(GRPH_BS_SRC:sources/libgrph/%.grph=%.bs.o) \
-				$(TEST_SRC:tests/%.c=%.t.o)
+TEST_OBJ	=	$(GRPH_SRC:sources/libgrph/%.c=build/cov/%.o) \
+				$(GRPH_BS_SRC:sources/libgrph/%.grph=build/%.grph.o) \
+				$(TEST_SRC:tests/%.c=build/tests/%.o)
 
 OS_UNAME		?=	$(shell uname)
 
 GRPH_STATIC	=	libgrph.a
 
 CC			?=	gcc
+GRPHC		=	grph compile
+
+GRPH_FLAGS	=	--disable-top-level-code --disable-mangling --pic
+CFLAGS		=	-fPIC
+CPPFLAGS	=	-Wall -Wextra -Wno-old-style-declaration -iquote include
+TEST_FLAGS	=	-g
+COV_FLAGS	=	-g --coverage
+LDLIBS		=	-lm
+LDFLAGS		=
+LDTESTLIBS	=	--coverage -lcriterion
 
 ifeq ($(OS_UNAME),Darwin)
 	GRPH_DYN	=	libgrph.dylib
@@ -53,30 +63,33 @@ install:	$(INSTALL_LIB)
 tests_run:	clean_cov $(TEST)
 	./$(TEST)
 
-%.bs.o:	sources/libgrph/%.grph
-	grph compile --emit=object -o $@ $< --disable-top-level-code --disable-mangling --pic
+build/%.grph.o:	sources/%.grph
+	$(GRPHC) --emit=object -o $@ $< $(GRPH_FLAGS)
 
-%.o:	sources/libgrph/%.c
-	$(CC) -Wall -Wextra -c -o $@ $< -Iinclude -fPIC
+build/%.c.o:	sources/%.c
+	mkdir -p $(@D)
+	$(CC) -c -o $@ $< $(CPPFLAGS) $(CFLAGS)
 
-%.g.o:	sources/libgrph/%.c
-	$(CC) -Wall -Wextra -g --coverage -c -o $@ $< -Iinclude
+build/cov/%.o:	sources/%.c
+	mkdir -p $(@D)
+	$(CC) -c -o $@ $< $(CPPFLAGS) $(CFLAGS) $(COV_FLAGS)
 
-%.t.o:	tests/%.c
-	$(CC) -Wall -Wextra -g -c -o $@ $< -Iinclude  $(OTHER_CFLAGS)
+build/tests/%.o:	tests/%.c
+	mkdir -p $(@D)
+	$(CC) -c -o $@ $< $(CPPFLAGS) $(CFLAGS) $(OTHER_CFLAGS) $(TEST_FLAGS)
 
 $(GRPH_STATIC):	$(GRPH_OBJ)
 	$(STATIC_CMD) $(GRPH_STATIC) $(GRPH_OBJ)
 
 $(GRPH_DYN):	$(GRPH_OBJ)
-	$(DYN_CMD) -o $(GRPH_DYN) $(GRPH_OBJ) -lm
+	$(DYN_CMD) -o $(GRPH_DYN) $(GRPH_OBJ) $(LDLIBS) $(LDFLAGS)
 
 $(INSTALL_LIB):	$(GRPH_DYN)
 	mkdir -p $(INSTALL_LOC)
 	$(INSTALL_CMD) $(GRPH_DYN) $(INSTALL_LIB)
 
 $(TEST):	$(TEST_OBJ)
-	$(CC) -o $(TEST) $(TEST_OBJ) -lcriterion --coverage -lm $(OTHER_LDFLAGS)
+	$(CC) -o $(TEST) $(TEST_OBJ) $(LDTESTLIBS) $(LDLIBS) $(LDFLAGS) $(OTHER_LDFLAGS)
 
 re: fclean all
 
@@ -84,13 +97,13 @@ clean_cov:
 	find . \( -name "#*#" -or -name "*~" -or -name "*.gcda"  \) -delete
 
 clean:	clean_cov
-	rm -f $(GRPH_OBJ) $(TEST_OBJ)
+	$(RM) $(GRPH_OBJ) $(TEST_OBJ)
 	find . -name "*.gcno" -delete
 
 fclean:	clean
-	rm -f $(GRPH_STATIC) $(GRPH_DYN) $(TEST)
+	$(RM) $(GRPH_STATIC) $(GRPH_DYN) $(TEST)
 
 uninstall:
-	rm -f $(INSTALL_LIB)
+	$(RM) $(INSTALL_LIB)
 
 .PHONY: all re clean_cov clean fclean tests_run install uninstall
