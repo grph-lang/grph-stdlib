@@ -115,3 +115,31 @@ void grphvwt_destroy_optional(void *restrict value, struct typetable *restrict t
         elemty->vwt->destroy(content, elemty);
     } // else trivial
 }
+
+void grphvwt_copy_tuple(void *restrict dest, void *restrict src, struct typetable *restrict type)
+{
+    int i = 0;
+    size_t offset = 0;
+    
+    while (type->generics[i]) {
+        while (i != 0 && (offset & (type->generics[i]->vwt->alignment - 1)))
+            offset++;
+        type->generics[i]->vwt->copy(dest + offset, src + offset, type->generics[i]);
+        offset += type->generics[i]->vwt->instance_size;
+        i++;
+    }
+}
+
+void grphvwt_destroy_tuple(void *restrict value, struct typetable *restrict type)
+{
+    int i = 0;
+    size_t offset = 0;
+    
+    while (type->generics[i]) {
+        while (i != 0 && (offset & (type->generics[i]->vwt->alignment - 1)))
+            offset++;
+        type->generics[i]->vwt->destroy(value + offset, type->generics[i]);
+        offset += type->generics[i]->vwt->instance_size;
+        i++;
+    }
+}
