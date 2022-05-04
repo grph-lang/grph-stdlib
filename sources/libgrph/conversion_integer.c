@@ -48,6 +48,7 @@ optional_integer_t string_to_integer(grph_string_t str)
     while (data[offset] == '+' || data[offset] == '-') {
         if (data[offset] == '-')
             multiplier *= -1;
+        offset++;
         if (offset == len)
             return (optional_integer_t) GRPH_NULL;
     }
