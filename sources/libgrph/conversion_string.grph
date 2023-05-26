@@ -16,6 +16,7 @@
 
 string int_to_string[integer number] = #external
 string float_to_string[float number] = #external
+string rotation_to_string[rotation number] = #external
 string type_to_string[type type] = #external
 
 boolean mixed_is_array[mixed value] = #external
@@ -35,6 +36,8 @@ type mixed_array_elem_type[mixed value] = #external
 		#return int_to_string[[val as! integer]]
 	#elseif val is float
 		#return float_to_string[[val as! float]]
+	#elseif val is rotation
+		#return rotation_to_string[[val as! rotation]]
 	#elseif val is string
 		#return val as! string
 	#elseif val is type

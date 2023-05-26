@@ -36,6 +36,13 @@ grph_string_t float_to_string(grph_float_t number)
     return (grph_string_t) { (0b010ULL << 61) | len, box };
 }
 
+grph_string_t rotation_to_string(grph_rotation_t number)
+{
+    char *box = alloc_box(strlen("360°") + 1);
+    grph_integer_t len = snprintf(box, 32, "%.0f°", number);
+    return (grph_string_t) { (0b010ULL << 61) | len, box };
+}
+
 grph_string_t grphas_string_forced(struct grph_existential *val);
 
 grph_integer_t mixed_array_length(struct grph_existential *value)
