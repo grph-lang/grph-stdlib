@@ -21,11 +21,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <inttypes.h>
 
 grph_string_t int_to_string(grph_integer_t number)
 {
     char *box = alloc_box(21); // max size is 20 + \0
-    grph_integer_t len = sprintf(box, "%lld", number);
+    grph_integer_t len = sprintf(box, "%" PRId64, number);
     return (grph_string_t) { (0b010ULL << 61) | len, box };
 }
 
