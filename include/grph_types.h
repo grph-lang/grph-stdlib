@@ -42,6 +42,7 @@ typedef grph_optional_t(grph_integer_t) optional_integer_t;
 typedef grph_optional_t(grph_float_t) optional_float_t;
 typedef grph_optional_t(grph_pos_t) optional_pos_t;
 typedef grph_optional_t(grph_string_t) optional_string_t;
+typedef grph_optional_t(grph_rotation_t) optional_rotation_t;
 
 
 #endif /* GRPH_TYPES_H */

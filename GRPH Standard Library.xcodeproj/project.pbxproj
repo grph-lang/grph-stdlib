@@ -19,6 +19,7 @@
 		20AABB2827CBE37F0049634C /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 20AABB2727CBE37F0049634C /* main.c */; };
 		20BCAD9728147BB500E48507 /* vwt.c in Sources */ = {isa = PBXBuildFile; fileRef = 20BCAD9628147BB500E48507 /* vwt.c */; };
 		20BCAD9B281489E000E48507 /* box.c in Sources */ = {isa = PBXBuildFile; fileRef = 20BCAD9A281489E000E48507 /* box.c */; };
+		20D5CA142A25DF3B00CF1BB7 /* conversion_rotation.c in Sources */ = {isa = PBXBuildFile; fileRef = 20D5CA132A25DF3B00CF1BB7 /* conversion_rotation.c */; };
 		20D640F527C003E6009B8159 /* test_char.c in Sources */ = {isa = PBXBuildFile; fileRef = 20D640F427C003E6009B8159 /* test_char.c */; };
 		20D640FF27C1A259009B8159 /* conversion_integer.c in Sources */ = {isa = PBXBuildFile; fileRef = 20D640FE27C1A259009B8159 /* conversion_integer.c */; };
 		20D6410127C1A938009B8159 /* cstring.c in Sources */ = {isa = PBXBuildFile; fileRef = 20D6410027C1A938009B8159 /* cstring.c */; };
@@ -75,6 +76,8 @@
 		20BCAD992814898000E48507 /* box.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = box.h; sourceTree = "<group>"; };
 		20BCAD9A281489E000E48507 /* box.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = box.c; sourceTree = "<group>"; };
 		20BCAD9C281562DC00E48507 /* ownership.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ownership.h; sourceTree = "<group>"; };
+		20D5CA122A25DE8D00CF1BB7 /* conversion_rotation.grph */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = conversion_rotation.grph; sourceTree = "<group>"; };
+		20D5CA132A25DF3B00CF1BB7 /* conversion_rotation.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = conversion_rotation.c; sourceTree = "<group>"; };
 		20D640F427C003E6009B8159 /* test_char.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = test_char.c; sourceTree = "<group>"; };
 		20D640FC27C12439009B8159 /* grph_op.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = grph_op.h; sourceTree = "<group>"; };
 		20D640FD27C1A237009B8159 /* conversion_integer.grph */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = conversion_integer.grph; sourceTree = "<group>"; };
@@ -139,6 +142,8 @@
 				20D640FD27C1A237009B8159 /* conversion_integer.grph */,
 				20D6410527C284BD009B8159 /* conversion_float.c */,
 				20D6410727C28522009B8159 /* conversion_float.grph */,
+				20D5CA132A25DF3B00CF1BB7 /* conversion_rotation.c */,
+				20D5CA122A25DE8D00CF1BB7 /* conversion_rotation.grph */,
 				20BCAD942810844000E48507 /* conversion_num.grph */,
 				20AABB2527CABB230049634C /* grph_array.c */,
 				201620EB27D436FC0002CC15 /* op_equal.c */,
@@ -303,6 +308,7 @@
 				20A04DFE27A1BB74002B11AB /* standard.c in Sources */,
 				201620EC27D436FC0002CC15 /* op_equal.c in Sources */,
 				20BCAD9728147BB500E48507 /* vwt.c in Sources */,
+				20D5CA142A25DF3B00CF1BB7 /* conversion_rotation.c in Sources */,
 				20AABB2827CBE37F0049634C /* main.c in Sources */,
 				20D640FF27C1A259009B8159 /* conversion_integer.c in Sources */,
 				2090E2D127BD724B00DE1670 /* strutils.c in Sources */,

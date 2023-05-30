@@ -1,5 +1,5 @@
 //
-//  conversion_float.c
+//  conversion_rotation.c
 //  GRPH stdlib - libgrph
 //
 //  Created by Emil Pedersen on 20/02/2022.
@@ -16,28 +16,28 @@
 #include <stdio.h>
 #include <errno.h>
 
-grph_float_t integer_to_float(grph_integer_t number)
+grph_rotation_t integer_to_rotation(grph_integer_t number)
 {
-    return (grph_float_t) number;
+    return (grph_rotation_t) number;
 }
 
-grph_float_t rotation_to_float(grph_rotation_t number)
+grph_rotation_t float_to_rotation(grph_float_t number)
 {
-    return (grph_float_t) number;
+    return (grph_rotation_t) number;
 }
 
-optional_float_t string_to_float(grph_string_t str)
+optional_rotation_t string_to_rotation(grph_string_t str)
 {
     bool need_free;
     char *data = grph_to_cstring(&str, &need_free);
     char *out;
     errno = 0;
-    grph_float_t result = strtod(data, &out);
+    grph_rotation_t result = strtod(data, &out);
     if (need_free)
         free(data);
     if (errno || *out) {
-        return (optional_float_t) GRPH_NULL;
+        return (optional_rotation_t) GRPH_NULL;
     } else {
-        return (optional_float_t) { true, result };
+        return (optional_rotation_t) { true, result };
     }
 }

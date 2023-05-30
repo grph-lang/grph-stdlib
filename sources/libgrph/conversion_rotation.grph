@@ -1,0 +1,27 @@
+//
+//  conversion_rotation.grph
+//  GRPH stdlib - libgrph
+//
+//  Created by Emil Pedersen on 30/05/2023.
+//
+//  This Source Code Form is subject to the terms of the Mozilla Public
+//  License, v. 2.0. If a copy of the MPL was not distributed with this
+//  file, You can obtain one at https://mozilla.org/MPL/2.0/.
+//
+
+#requires GRPH 1.11
+#compiler strict true
+
+rotation integer_to_rotation[integer number] = #external
+rotation float_to_rotation[rotation number] = #external
+rotation? string_to_rotation[string number] = #external
+
+#function rotation? grphas_rotation[mixed val] = null
+	#if val is integer
+		#return integer_to_rotation[[val as! integer]]
+	#elseif val is float
+		#return float_to_rotation[[val as! rotation]]
+	#elseif val is rotation
+		#return val as! rotation
+	#elseif val is string
+		#return string_to_rotation[[val as! string]]
