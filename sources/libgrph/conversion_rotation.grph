@@ -13,14 +13,14 @@
 #compiler strict true
 
 rotation integer_to_rotation[integer number] = #external
-rotation float_to_rotation[rotation number] = #external
+rotation float_to_rotation[float number] = #external
 rotation? string_to_rotation[string number] = #external
 
 #function rotation? grphas_rotation[mixed val] = null
 	#if val is integer
 		#return integer_to_rotation[[val as! integer]]
 	#elseif val is float
-		#return float_to_rotation[[val as! rotation]]
+		#return float_to_rotation[[val as! float]]
 	#elseif val is rotation
 		#return val as! rotation
 	#elseif val is string
