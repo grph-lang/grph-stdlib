@@ -13,6 +13,7 @@
 #compiler strict true
 
 float integer_to_float[integer number] = #external
+float rotation_to_float[rotation number] = #external
 float? string_to_float[string number] = #external
 
 #function float? grphas_float[mixed val] = null
@@ -20,5 +21,7 @@ float? string_to_float[string number] = #external
 		#return integer_to_float[[val as! integer]]
 	#elseif val is float
 		#return val as! float
+	#elseif val is rotation
+		#return rotation_to_float[[val as! rotation]]
 	#elseif val is string
 		#return string_to_float[[val as! string]]

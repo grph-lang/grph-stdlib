@@ -20,6 +20,10 @@ grph_float_t integer_to_float(grph_integer_t number)
 {
     return (grph_float_t) number;
 }
+grph_float_t rotation_to_float(grph_rotation_t number)
+{
+    return (grph_float_t) number;
+}
 
 optional_float_t string_to_float(grph_string_t str)
 {
