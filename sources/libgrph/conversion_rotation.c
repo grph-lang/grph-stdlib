@@ -15,6 +15,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <errno.h>
+#include <string.h>
 
 grph_rotation_t integer_to_rotation(grph_integer_t number)
 {
@@ -35,7 +36,7 @@ optional_rotation_t string_to_rotation(grph_string_t str)
     grph_rotation_t result = strtod(data, &out);
     if (need_free)
         free(data);
-    if (errno || *out) {
+    if (errno || (out[0] != '\0' && strcmp(out, "º") && strcmp(out, "°"))) {
         return (optional_rotation_t) GRPH_NULL;
     } else {
         return (optional_rotation_t) { true, result };
