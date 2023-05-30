@@ -25,5 +25,7 @@ integer? string_to_integer[string number] = #external
 		#return val as! integer
 	#elseif val is float
 		#return float_to_integer[[val as! float]]
+	#elseif val is rotation
+		#return [val as! rotation] as float as integer
 	#elseif val is string
 		#return string_to_integer[[val as! string]]
