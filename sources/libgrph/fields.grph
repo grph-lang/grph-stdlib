@@ -1,0 +1,18 @@
+//
+//  fields.grph
+//  GRPH stdlib - libgrph
+//
+//  Created by Emil Pedersen on 05/06/2023.
+//
+//  This Source Code Form is subject to the terms of the Mozilla Public
+//  License, v. 2.0. If a copy of the MPL was not distributed with this
+//  file, You can obtain one at https://mozilla.org/MPL/2.0/.
+//
+
+#requires GRPH 1.11
+#compiler strict true
+
+float grphp_color_fred_get[color this] = this.red as float / 255.0
+float grphp_color_fgreen_get[color this] = this.green as float / 255.0
+float grphp_color_fblue_get[color this] = this.blue as float / 255.0
+integer grphp_color_alpha_get[color this] = [this.falpha * 255.0] as auto
