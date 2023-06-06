@@ -23,5 +23,6 @@ sf::RenderWindow &getWindow()
 extern "C" void grphg_init(void)
 {
     sf::RenderWindow &window = getWindow();
-    window.setFramerateLimit(60);
+    window.clear(sf::Color::Black);
+    window.display();
 }
