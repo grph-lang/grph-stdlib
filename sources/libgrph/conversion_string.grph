@@ -45,6 +45,17 @@ type mixed_array_elem_type[mixed value] = #external
 		#default
 			#return "direction.UNKNOWN"
 
+#function string stroke_to_string[stroke s]
+	#switch s
+		#case stroke.ELONGATED
+			#return "stroke.ELONGATED"
+		#case stroke.CUT
+			#return "stroke.CUT"
+		#case stroke.ROUNDED
+			#return "stroke.ROUNDED"
+		#default
+			#return "stroke.UNKNOWN"
+
 #function string? grphas_string[mixed val] = null
 	#if val is void
 		#return "void.VOID"
@@ -65,6 +76,8 @@ type mixed_array_elem_type[mixed value] = #external
 		#return type_to_string[[val as! type]]
 	#elseif val is direction
 		#return direction_to_string[[val as! direction]]
+	#elseif val is stroke
+		#return stroke_to_string[[val as! stroke]]
 	#elseif val is color
 		final color c = val as! color
 		string params = toString[c.red c.green c.blue]
