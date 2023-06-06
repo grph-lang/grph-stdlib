@@ -42,6 +42,12 @@ type mixed_array_elem_type[mixed value] = #external
 		#return val as! string
 	#elseif val is type
 		#return type_to_string[[val as! type]]
+	#elseif val is color
+		final color c = val as! color
+		string params = toString[c.red c.green c.blue]
+		#if c.falpha < 1.0
+			params = toString[params c.falpha]
+		#return concat["color(" params ")"]
 	#elseif mixed_is_array[val]
 		string s = "<" + type_to_string[mixed_array_elem_type[val]] + ">{"
 		int i = 0
