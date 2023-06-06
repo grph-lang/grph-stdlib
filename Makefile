@@ -11,13 +11,13 @@
 
 GRPH_SRC	=	$(wildcard sources/libgrph/*.c)
 GRPH_BS_SRC	=	$(wildcard sources/libgrph/*.grph)
-GRPH_YS_SRC	=	$(wildcard sources/libysfml/*.c)
+GRPH_YS_SRC	=	$(wildcard sources/libysfml/*.c++)
 TEST_SRC	=	$(wildcard tests/*.c)
 
 GRPH_OBJ	=	$(GRPH_SRC:sources/%.c=build/%.c.o) \
 				$(GRPH_BS_SRC:sources/%.grph=build/%.grph.o)
 
-GRPH_YS_OBJ	=	$(GRPH_YS_SRC:sources/%.c=build/%.c.o)
+GRPH_YS_OBJ	=	$(GRPH_YS_SRC:sources/%.c++=build/%.c++.o)
 
 TEST_OBJ	=	$(GRPH_SRC:sources/libgrph/%.c=build/cov/%.o) \
 				$(GRPH_BS_SRC:sources/libgrph/%.grph=build/%.grph.o) \
@@ -31,8 +31,9 @@ CC			?=	gcc
 GRPHC		=	grph compile
 
 GRPH_FLAGS	=	--disable-top-level-code --disable-mangling --pic
-CFLAGS		=	-fPIC
-CPPFLAGS	=	-Wall -Wextra -Wno-old-style-declaration -iquote include
+CFLAGS		=	-fPIC -Wno-old-style-declaration
+CXXFLAGS	=	-fPIC -std=c++20
+CPPFLAGS	=	-Wall -Wextra -iquote include
 TEST_FLAGS	=	-g
 COV_FLAGS	=	-g --coverage
 LDLIBS		=	-lm
@@ -77,6 +78,10 @@ build/%.grph.o:	sources/%.grph
 build/%.c.o:	sources/%.c
 	mkdir -p $(@D)
 	$(CC) -c -o $@ $< $(CPPFLAGS) $(CFLAGS)
+
+build/%.c++.o:	sources/%.c++
+	mkdir -p $(@D)
+	$(CXX) -c -o $@ $< $(CPPFLAGS) $(CXXFLAGS)
 
 build/cov/%.o:	sources/%.c
 	mkdir -p $(@D)
