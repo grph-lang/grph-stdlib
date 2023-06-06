@@ -24,6 +24,27 @@ string mixed_array_elem_to_string[mixed value, int index] = #external
 integer mixed_array_length[mixed value] = #external
 type mixed_array_elem_type[mixed value] = #external
 
+#function string direction_to_string[direction dir]
+	#switch dir
+		#case direction.LEFT
+			#return "direction.LEFT"
+		#case direction.RIGHT
+			#return "direction.RIGHT"
+		#case direction.UP
+			#return "direction.UP"
+		#case direction.DOWN
+			#return "direction.DOWN"
+		#case direction.UP_LEFT
+			#return "direction.UP_LEFT"
+		#case direction.UP_RIGHT
+			#return "direction.UP_RIGHT"
+		#case direction.DOWN_LEFT
+			#return "direction.DOWN_LEFT"
+		#case direction.DOWN_RIGHT
+			#return "direction.DOWN_RIGHT"
+		#default
+			#return "direction.UNKNOWN"
+
 #function string? grphas_string[mixed val] = null
 	#if val is void
 		#return "void.VOID"
@@ -42,6 +63,8 @@ type mixed_array_elem_type[mixed value] = #external
 		#return val as! string
 	#elseif val is type
 		#return type_to_string[[val as! type]]
+	#elseif val is direction
+		#return direction_to_string[[val as! direction]]
 	#elseif val is color
 		final color c = val as! color
 		string params = toString[c.red c.green c.blue]
