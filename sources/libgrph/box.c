@@ -49,6 +49,10 @@ bool release_box(void *box)
 #ifdef DEBUG_BOX
     fprintf(stderr, "%p: release\n", box);
 #endif
+    if (box == NULL) {
+        fprintf(stderr, "ERROR: release_box(NULL)\n");
+        abort();
+    }
     if (BOX_REFCOUNT(box) == 0) {
         return true;
     } else {
