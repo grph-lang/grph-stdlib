@@ -11,10 +11,13 @@
 
 GRPH_SRC	=	$(wildcard sources/libgrph/*.c)
 GRPH_BS_SRC	=	$(wildcard sources/libgrph/*.grph)
+GRPH_YS_SRC	=	$(wildcard sources/libysfml/*.c)
 TEST_SRC	=	$(wildcard tests/*.c)
 
 GRPH_OBJ	=	$(GRPH_SRC:sources/%.c=build/%.c.o) \
 				$(GRPH_BS_SRC:sources/%.grph=build/%.grph.o)
+
+GRPH_YS_OBJ	=	$(GRPH_YS_SRC:sources/%.c=build/%.c.o)
 
 TEST_OBJ	=	$(GRPH_SRC:sources/libgrph/%.c=build/cov/%.o) \
 				$(GRPH_BS_SRC:sources/libgrph/%.grph=build/%.grph.o) \
@@ -35,29 +38,34 @@ COV_FLAGS	=	-g --coverage
 LDLIBS		=	-lm
 LDFLAGS		=
 LDTESTLIBS	=	--coverage -lcriterion
+LD_YS_LIBS	=	-lcsfml-graphics -lcsfml-window -lcsfml-system
 
 ifeq ($(OS_UNAME),Darwin)
 	GRPH_DYN	=	libgrph.dylib
+	GRPH_YS_DYN	=	libgrphysfml.dylib
 	DYN_CMD		=	$(CC) -dynamiclib -Wl,-U,_grph_entrypoint
 	INSTALL_CMD	=	cp -c
 	POSTINSTALL_CMD	=
 else
 	GRPH_DYN	=	libgrph.so
+	GRPH_YS_DYN	=	libgrphysfml.so
 	DYN_CMD		=	$(CC) -shared
 	INSTALL_CMD	=	cp
 	POSTINSTALL_CMD	=	ldconfig
 endif
 
-INSTALL_LOC	?=	/usr/local/lib
-INSTALL_LIB	=	$(INSTALL_LOC)/$(GRPH_DYN)
+INSTALL_LOC		?=	/usr/local/lib
+INSTALL_LIB		=	$(INSTALL_LOC)/$(GRPH_DYN)
+INSTALL_LIB_YS	=	$(INSTALL_LOC)/$(GRPH_YS_DYN)
+INSTALL_LIBS	=	$(INSTALL_LIB) $(INSTALL_LIB_YS)
 
 STATIC_CMD	=	ar rc
 
 TEST		=	unit_tests
 
-all:	$(GRPH_DYN)
+all:	$(GRPH_DYN) $(GRPH_YS_DYN)
 
-install:	$(INSTALL_LIB)
+install:	$(INSTALL_LIBS)
 	$(POSTINSTALL_CMD)
 
 tests_run:	clean_cov $(TEST)
@@ -84,9 +92,16 @@ $(GRPH_STATIC):	$(GRPH_OBJ)
 $(GRPH_DYN):	$(GRPH_OBJ)
 	$(DYN_CMD) -o $(GRPH_DYN) $(GRPH_OBJ) $(LDLIBS) $(LDFLAGS)
 
+$(GRPH_YS_DYN):	$(GRPH_YS_OBJ)
+	$(DYN_CMD) -o $(GRPH_YS_DYN) $(GRPH_YS_OBJ) $(LDLIBS) $(LD_YS_LIBS) $(LDFLAGS)
+
 $(INSTALL_LIB):	$(GRPH_DYN)
 	mkdir -p $(INSTALL_LOC)
 	$(INSTALL_CMD) $(GRPH_DYN) $(INSTALL_LIB)
+
+$(INSTALL_LIB_YS):	$(GRPH_YS_DYN)
+	mkdir -p $(INSTALL_LOC)
+	$(INSTALL_CMD) $(GRPH_YS_DYN) $(INSTALL_LIB_YS)
 
 $(TEST):	$(TEST_OBJ)
 	$(CC) -o $(TEST) $(TEST_OBJ) $(LDTESTLIBS) $(LDLIBS) $(LDFLAGS) $(OTHER_LDFLAGS)

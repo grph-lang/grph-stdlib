@@ -17,6 +17,9 @@
 // defined in user code
 void grph_entrypoint(void);
 
+// defined in graphic library, if linking against it
+void grphg_init(void) __attribute__((weak));
+
 struct typetable *return_string_array_typetable(void);
 
 grph_array_t *grphv_global_argv;
@@ -29,6 +32,8 @@ int main(int argc, char **argv)
         grpharr_append(args, &converted);
     }
     grphv_global_argv = args;
+    if (grphg_init)
+        grphg_init();
     grph_entrypoint();
     grphv_global_argv->isa->vwt->destroy(&grphv_global_argv, grphv_global_argv->isa);
 }
