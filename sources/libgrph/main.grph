@@ -13,3 +13,5 @@
 #compiler strictest true
 
 #function type return_string_array_typetable[] = {string}.TYPE
+#function type return_Background_typetable[] = Background.TYPE
+#function type return_color_typetable[] = color.TYPE
