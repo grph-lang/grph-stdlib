@@ -24,6 +24,6 @@ struct {
     struct grph_existential paint;
 } typedef grph_Background_t;
 
-grph_Background_t *grphc_Background(grph_pos_t size, struct grph_existential paint);
+grph_Background_t *grphc_Background(grph_pos_t size, struct grph_existential *paint);
 
 #endif /* GRPH_SHAPES_H */

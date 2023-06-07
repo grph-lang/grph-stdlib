@@ -21,12 +21,12 @@
 
 struct typetable *return_Background_typetable(void);
 
-grph_Background_t *grphc_Background(grph_pos_t size, struct grph_existential paint)
+grph_Background_t *grphc_Background(grph_pos_t size, struct grph_existential *paint)
 {
     grph_Background_t *bg = alloc_box(sizeof(grph_Background_t));
     
     bg->isa = return_Background_typetable();
     bg->size = size;
-    bg->paint = paint;
+    bg->paint = *paint;
     return bg;
 }

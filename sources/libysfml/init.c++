@@ -12,6 +12,7 @@
 extern "C" {
 #include "grph_shapes.h"
 #include "grph_types.h"
+#include "ns/standard.h"
 }
 
 #include <SFML/Graphics.hpp>
@@ -28,10 +29,32 @@ sf::RenderWindow &getWindow()
     return window;
 }
 
+extern "C" void grphg_update(void)
+{
+    sf::RenderWindow &window = getWindow();
+
+    grph_color_t *color = (grph_color_t *) grphv_global_back->paint.data;
+    window.clear(sf::Color(color->red, color->green, color->blue));
+    window.display();
+}
+
 extern "C" void grphg_init(void)
 {
-    grphv_global_back = grphc_Background({640, 480}, { return_color_typetable(), {0} });
+    struct grph_existential paint = { return_color_typetable(), {0} };
+    grphv_global_back = grphc_Background({640, 480}, &paint);
+    grphg_update();
+}
+
+extern "C" void grphg_update_back(void)
+{
     sf::RenderWindow &window = getWindow();
-    window.clear(sf::Color::Black);
-    window.display();
+
+    window.setSize(sf::Vector2u(grphv_global_back->size.x, grphv_global_back->size.y));
+    window.setView(sf::View(sf::FloatRect(0, 0, grphv_global_back->size.x, grphv_global_back->size.y)));
+    grphg_update();
+}
+
+extern "C" void grph_standard_update(void)
+{
+    grphg_update();
 }

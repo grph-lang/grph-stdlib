@@ -30,6 +30,13 @@ struct {
     void *buffer;
 } typedef grph_string_t;
 
+struct {
+    uint8_t red;
+    uint8_t green;
+    uint8_t blue;
+    float alpha;
+} typedef grph_color_t;
+
 struct grph_existential {
     struct typetable *type;
     void *data[3];
