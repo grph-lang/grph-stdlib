@@ -13,6 +13,8 @@
 #compiler strictest true
 
 type return_string_array_typetable[] = {string}.TYPE
-type return_Background_typetable[] = Background.TYPE
 type return_shape_array_typetable[] = {shape}.TYPE
 type return_color_typetable[] = color.TYPE
+
+type return_Background_typetable[] = Background.TYPE
+type return_Group_typetable[] = Group.TYPE

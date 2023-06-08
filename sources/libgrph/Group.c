@@ -16,6 +16,25 @@
 struct typetable *return_Group_typetable(void);
 struct typetable *return_shape_array_typetable(void);
 
+grph_Group_t *grphc_Group(grph_string_t name, grph_integer_t zpos, grph_rotation_t rotation, grph_array_t *shapes)
+{
+    grph_Group_t *this = alloc_box(sizeof(grph_Group_t));
+
+    this->superclass.isa = return_Group_typetable();
+    if (shapes)
+        grphvwt_retain_ref(&this->shapes, shapes, return_shape_array_typetable());
+    else
+        this->shapes = grpharr_create(return_shape_array_typetable(), 0);
+
+    // TODO: implement name, zpos and rotation
+    return this;
+}
+
+grph_array_t *grphp_Group_shapes_get(grph_Group_t *this)
+{
+    return this->shapes;
+}
+
 void grphd_Group(grph_Group_t *bg)
 {
     grphvwt_release_ref(&bg->shapes, return_shape_array_typetable());
