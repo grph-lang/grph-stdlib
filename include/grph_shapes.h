@@ -43,6 +43,10 @@ destroy_func grphvwt_release_Group;
 
 grph_Background_t *grphc_Background(
     grph_pos_t size, struct grph_existential *paint);
+void grphd_Background(grph_Background_t *bg);
 destroy_func grphvwt_release_Background;
+
+void grphd_Group(grph_Group_t *group);
+destroy_func grphvwt_release_Group;
 
 #endif /* GRPH_SHAPES_H */
