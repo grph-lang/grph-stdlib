@@ -27,7 +27,7 @@ grph_Background_t *grphc_Background(grph_pos_t size, struct grph_existential *pa
 {
     grph_Background_t *bg = alloc_box(sizeof(grph_Background_t));
 
-    bg->superclass.isa = return_Background_typetable();
+    bg->superclass.superclass.isa = return_Background_typetable();
     bg->superclass.shapes = grpharr_create(return_shape_array_typetable(), 0);
     bg->size = size;
     bg->paint = *paint;

@@ -19,6 +19,11 @@
 struct {
     // as all reference types
     struct typetable *isa;
+} typedef grph_shape_t;
+
+struct {
+    // superclass: grph_shape_t
+    grph_shape_t superclass;
 
     // the shapes in this group
     grph_array_t *shapes;
@@ -27,7 +32,7 @@ struct {
 struct {
     // superclass: grph_Group_t
     grph_Group_t superclass;
-    
+
     // the size of the window, in pixels
     grph_pos_t size;
     // the background paint of the window
