@@ -32,7 +32,14 @@ sf::RenderWindow &getWindow()
 extern "C" void grphg_update(void)
 {
     sf::RenderWindow &window = getWindow();
+    sf::Event event;
 
+    while (window.pollEvent(event)) {
+        if (event.type == sf::Event::Closed) {
+            window.close();
+            exit(0);
+        }
+    }
     grph_color_t *color = (grph_color_t *) grphv_global_back->paint.data;
     window.clear(sf::Color(color->red, color->green, color->blue));
     window.display();
@@ -51,6 +58,7 @@ extern "C" void grphg_update_back(void)
 
     window.setSize(sf::Vector2u(grphv_global_back->size.x, grphv_global_back->size.y));
     window.setView(sf::View(sf::FloatRect(0, 0, grphv_global_back->size.x, grphv_global_back->size.y)));
+    sf::sleep(sf::Time(sf::milliseconds(8)));
     grphg_update();
 }
 
