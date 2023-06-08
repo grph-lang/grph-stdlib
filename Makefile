@@ -11,13 +11,13 @@
 
 GRPH_SRC	=	$(wildcard sources/libgrph/*.c)
 GRPH_BS_SRC	=	$(wildcard sources/libgrph/*.grph)
-GRPH_YS_SRC	=	$(wildcard sources/libysfml/*.c++)
+GRPH_YS_SRC	=	$(wildcard sources/libysfml/*.c++) $(wildcard sources/libysfml/*.grph)
 TEST_SRC	=	$(wildcard tests/*.c)
 
 GRPH_OBJ	=	$(GRPH_SRC:sources/%.c=build/%.c.o) \
 				$(GRPH_BS_SRC:sources/%.grph=build/%.grph.o)
 
-GRPH_YS_OBJ	=	$(GRPH_YS_SRC:sources/%.c++=build/%.c++.o)
+GRPH_YS_OBJ	=	$(GRPH_YS_SRC:sources/%=build/%.o)
 
 TEST_OBJ	=	$(GRPH_SRC:sources/libgrph/%.c=build/cov/%.o) \
 				$(GRPH_BS_SRC:sources/libgrph/%.grph=build/%.grph.o) \

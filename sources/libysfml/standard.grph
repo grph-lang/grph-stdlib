@@ -1,0 +1,23 @@
+//
+//  standard.c++
+//  GRPH stdlib - libysfml
+//
+//  Created by Emil Pedersen on 08/06/2023.
+// 
+//  This Source Code Form is subject to the terms of the Mozilla Public
+//  License, v. 2.0. If a copy of the MPL was not distributed with this
+//  file, You can obtain one at https://mozilla.org/MPL/2.0/.
+//
+
+#requires GRPH 1.11
+#compiler strictest true
+
+void grphg_update[] = #external
+
+#function void grph_standard_validate[shape shape]
+	auto shapes = back.shapes
+	shapes{+} = shape
+	grphg_update[]
+
+#function void grph_standard_update[]
+	grphg_update[]

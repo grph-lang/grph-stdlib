@@ -61,8 +61,3 @@ extern "C" void grphg_update_back(void)
     sf::sleep(sf::Time(sf::milliseconds(8)));
     grphg_update();
 }
-
-extern "C" void grph_standard_update(void)
-{
-    grphg_update();
-}
