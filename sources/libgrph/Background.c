@@ -10,15 +10,8 @@
 //
 
 #include "grph_shapes.h"
-#include "existentials.h"
-#include "typetable.h"
 #include "box.h"
-#include "ownership.h"
 #include "vwt.h"
-
-#include <stdlib.h>
-#include <stdarg.h>
-#include <string.h>
 
 struct typetable *return_Background_typetable(void);
 struct typetable *return_shape_array_typetable(void);
@@ -32,12 +25,6 @@ grph_Background_t *grphc_Background(grph_pos_t size, struct grph_existential *pa
     bg->size = size;
     bg->paint = *paint;
     return bg;
-}
-
-void grphd_Group(grph_Group_t *bg)
-{
-    grphvwt_release_ref(&bg->shapes, return_shape_array_typetable());
-    dealloc_box(bg);
 }
 
 void grphd_Background(grph_Background_t *bg)
