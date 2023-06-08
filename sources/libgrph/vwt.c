@@ -79,14 +79,14 @@ void grphvwt_release_ref(void *restrict _value, struct typetable *restrict _type
     void *value = *(void **) _value;
     // retrieve real type from isa, first element in value
     struct typetable *type = *(void **) value;
-    
-    if (type->vwt->destroy != &grphvwt_release_ref) {
-        // call the actual type's destructor
-        return type->vwt->destroy(_value, type);
-    }
+
     if (release_box(value)) {
-        dealloc_box(value);
+        type->vwt->deinit(value);
     }
+}
+
+void grphd_ref(void *ref) {
+    dealloc_box(ref);
 }
 
 void grphvwt_copy_optional(void *restrict dest, void *restrict src, struct typetable *restrict type)

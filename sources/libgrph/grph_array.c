@@ -126,18 +126,14 @@ void grpharr_get_mixed(grph_array_t *array, grph_integer_t index, grph_owned voi
     }
 }
 
-void grphvwt_release_array(void *_value, struct typetable *type)
+void grphd_array(grph_array_t *array)
 {
-    (void) type;
-    grph_array_t *array = *(grph_array_t **) _value;
     struct typetable *elem = array->isa->generics[0];
     size_t elemsize = elem->vwt->instance_size;
     
-    if (release_box(array)) {
-        for (grph_integer_t i = 0; i < array->count; i++) {
-            elem->vwt->destroy(array->buffer + elemsize * i, elem);
-        }
-        free(array->buffer);
-        dealloc_box(array);
+    for (grph_integer_t i = 0; i < array->count; i++) {
+        elem->vwt->destroy(array->buffer + elemsize * i, elem);
     }
+    free(array->buffer);
+    dealloc_box(array);
 }

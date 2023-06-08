@@ -35,6 +35,4 @@ destroy_func grphvwt_release_string;
 copy_func grphvwt_retain_font;
 destroy_func grphvwt_release_font;
 
-destroy_func grphvwt_release_array;
-
 #endif /* vwt_h */

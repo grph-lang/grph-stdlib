@@ -36,8 +36,7 @@ grph_Background_t *grphc_Background(grph_pos_t size, struct grph_existential *pa
 
 void grphd_Group(grph_Group_t *bg)
 {
-    grphvwt_release_array(
-        &bg->shapes,return_shape_array_typetable());
+    grphvwt_release_ref(&bg->shapes, return_shape_array_typetable());
     dealloc_box(bg);
 }
 
