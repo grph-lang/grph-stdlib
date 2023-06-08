@@ -14,19 +14,45 @@
 #include "typetable.h"
 #include "box.h"
 #include "ownership.h"
+#include "vwt.h"
 
 #include <stdlib.h>
 #include <stdarg.h>
 #include <string.h>
 
 struct typetable *return_Background_typetable(void);
+struct typetable *return_shape_array_typetable(void);
 
 grph_Background_t *grphc_Background(grph_pos_t size, struct grph_existential *paint)
 {
     grph_Background_t *bg = alloc_box(sizeof(grph_Background_t));
-    
-    bg->isa = return_Background_typetable();
+
+    bg->superclass.isa = return_Background_typetable();
+    bg->superclass.shapes = grpharr_create(return_shape_array_typetable(), 0);
     bg->size = size;
     bg->paint = *paint;
     return bg;
+}
+
+void grphvwt_release_Group(void *_value, struct typetable *type)
+{
+    (void) type;
+    grph_Background_t *bg = *(grph_Background_t **) _value;
+
+    if (release_box(bg)) {
+        grphvwt_release_array(bg->superclass.shapes, return_shape_array_typetable());
+        dealloc_box(bg);
+    }
+}
+
+void grphvwt_release_Background(void *_value, struct typetable *type)
+{
+    (void) type;
+    grph_Background_t *bg = *(grph_Background_t **) _value;
+
+    if (release_box(bg)) {
+        grphvwt_release_array(bg->superclass.shapes, return_shape_array_typetable());
+        grphvwt_destroy_mixed(&bg->paint, bg->paint.type);
+        dealloc_box(bg);
+    }
 }

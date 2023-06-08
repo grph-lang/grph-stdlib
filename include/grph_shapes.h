@@ -13,10 +13,20 @@
 #define GRPH_SHAPES_H
 
 #include "grph_types.h"
+#include "typetable.h"
+#include "grph_array.h"
 
 struct {
     // as all reference types
     struct typetable *isa;
+
+    // the shapes in this group
+    grph_array_t *shapes;
+} typedef grph_Group_t;
+
+struct {
+    // superclass: grph_Group_t
+    grph_Group_t superclass;
     
     // the size of the window, in pixels
     grph_pos_t size;
@@ -24,6 +34,10 @@ struct {
     struct grph_existential paint;
 } typedef grph_Background_t;
 
-grph_Background_t *grphc_Background(grph_pos_t size, struct grph_existential *paint);
+destroy_func grphvwt_release_Group;
+
+grph_Background_t *grphc_Background(
+    grph_pos_t size, struct grph_existential *paint);
+destroy_func grphvwt_release_Background;
 
 #endif /* GRPH_SHAPES_H */
