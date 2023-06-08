@@ -45,23 +45,3 @@ void grphd_Background(grph_Background_t *bg)
     grphvwt_destroy_mixed(&bg->paint, bg->paint.type);
     grphd_Group(&bg->superclass);
 }
-
-void grphvwt_release_Group(void *_value, struct typetable *type)
-{
-    (void) type;
-    grph_Group_t *bg = *(grph_Group_t **) _value;
-
-    if (release_box(bg)) {
-        grphd_Group(bg);
-    }
-}
-
-void grphvwt_release_Background(void *_value, struct typetable *type)
-{
-    (void) type;
-    grph_Background_t *bg = *(grph_Background_t **) _value;
-
-    if (release_box(bg)) {
-        grphd_Background(bg);
-    }
-}
