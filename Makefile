@@ -111,19 +111,26 @@ $(INSTALL_LIB_YS):	$(GRPH_YS_DYN)
 $(TEST):	$(TEST_OBJ)
 	$(CC) -o $(TEST) $(TEST_OBJ) $(LDTESTLIBS) $(LDLIBS) $(LDFLAGS) $(OTHER_LDFLAGS)
 
-re: fclean all
+asan: CFLAGS += -fsanitize=address
+asan: CXXFLAGS += -fsanitize=address
+asan: LDFLAGS += -fsanitize=address
+asan: CC = clang
+asan: all
+
+re: fclean
+	$(MAKE) all
 
 clean_cov:
 	find . \( -name "#*#" -or -name "*~" -or -name "*.gcda"  \) -delete
 
 clean:	clean_cov
-	$(RM) $(GRPH_OBJ) $(TEST_OBJ)
+	$(RM) $(GRPH_OBJ) $(TEST_OBJ) $(GRPH_YS_OBJ)
 	find . -name "*.gcno" -delete
 
 fclean:	clean
-	$(RM) $(GRPH_STATIC) $(GRPH_DYN) $(TEST)
+	$(RM) $(GRPH_STATIC) $(GRPH_DYN) $(TEST) $(GRPH_YS_DYN)
 
 uninstall:
-	$(RM) $(INSTALL_LIB)
+	$(RM) $(INSTALL_LIBS)
 
 .PHONY: all re clean_cov clean fclean tests_run install uninstall

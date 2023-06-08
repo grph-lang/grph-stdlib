@@ -40,7 +40,7 @@ void grphvwt_release_Group(void *_value, struct typetable *type)
     grph_Background_t *bg = *(grph_Background_t **) _value;
 
     if (release_box(bg)) {
-        grphvwt_release_array(bg->superclass.shapes, return_shape_array_typetable());
+        grphvwt_release_array(&bg->superclass.shapes, return_shape_array_typetable());
         dealloc_box(bg);
     }
 }
@@ -51,7 +51,7 @@ void grphvwt_release_Background(void *_value, struct typetable *type)
     grph_Background_t *bg = *(grph_Background_t **) _value;
 
     if (release_box(bg)) {
-        grphvwt_release_array(bg->superclass.shapes, return_shape_array_typetable());
+        grphvwt_release_array(&bg->superclass.shapes, return_shape_array_typetable());
         grphvwt_destroy_mixed(&bg->paint, bg->paint.type);
         dealloc_box(bg);
     }

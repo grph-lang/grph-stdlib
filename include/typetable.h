@@ -14,6 +14,10 @@
 
 #include <stdint.h>
 
+#ifdef __cplusplus
+    #define restrict __restrict__
+#endif
+
 struct typetable;
 typedef void copy_func(void *restrict dest, void *restrict src, struct typetable *restrict type);
 typedef void destroy_func(void *restrict value, struct typetable *restrict type);
