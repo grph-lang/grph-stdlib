@@ -13,18 +13,42 @@
 #define GRPH_NS_STANDARD_H
 
 #include "grph_types.h"
+#include "grph_shapes.h"
 
 optional_integer_t grph_standard_stringToInteger(grph_string_t string);
 optional_float_t grph_standard_stringToFloat(grph_string_t string);
+void grph_standard_assert(grph_boolean_t precondition, optional_string_t message);
+grph_rotation_t grph_standard_getRotation(grph_shape_t * shape);
+optional_pos_t grph_standard_getRotationCenter(grph_shape_t * shape);
+grph_pos_t grph_standard_getPosition(grph_shape_t * shape);
+grph_pos_t grph_standard_getSize(grph_shape_t * shape);
+grph_pos_t grph_standard_getCenterPoint(grph_shape_t * shape);
+grph_string_t grph_standard_getName(grph_shape_t * shape);
+struct grph_existential * grph_standard_getPaint(grph_shape_t * shape);
+grph_float_t grph_standard_getStrokeWidth(grph_shape_t * shape);
+grph_boolean_t grph_standard_isFilled(grph_shape_t * shape);
+grph_integer_t grph_standard_getZPos(grph_shape_t * shape);
 grph_float_t grph_standard_getXForPos(grph_pos_t pos);
 grph_float_t grph_standard_getYForPos(grph_pos_t pos);
 grph_rotation_t grph_standard_integerToRotation(grph_integer_t integer);
 grph_integer_t grph_standard_rotationToInteger(grph_rotation_t rotation);
+grph_shape_t * grph_standard_getShape(grph_integer_t index);
 grph_integer_t grph_standard_getNumberOfShapes(void);
+grph_pos_t grph_standard_createPos(struct grph_existential * x, struct grph_existential * y);
+grph_shape_t * grph_standard_clippedShape(grph_shape_t * shape, grph_shape_t * clip);
+grph_boolean_t grph_standard_isInGroup(grph_Group_t group, grph_shape_t * shape);
+void grph_standard_validate(grph_shape_t * shape);
 void grph_standard_validateAll(void);
+void grph_standard_unvalidate(grph_shape_t * shape);
 void grph_standard_update(void);
 void grph_standard_wait(grph_integer_t time);
 void grph_standard_end(void);
+void grph_standard_setHCentered(grph_shape_t * shape);
+void grph_standard_setLeftAligned(grph_shape_t * shape);
+void grph_standard_setRightAligned(grph_shape_t * shape);
+void grph_standard_setVCentered(grph_shape_t * shape);
+void grph_standard_setTopAligned(grph_shape_t * shape);
+void grph_standard_setBottomAligned(grph_shape_t * shape);
 
 #endif /* GRPH_NS_STANDARD_H */
 

@@ -13,8 +13,15 @@
 #define GRPH_NS_MATH_H
 
 #include "grph_types.h"
+#include "grph_shapes.h"
 
+grph_float_t grph_math_sqrt(struct grph_existential * number);
+grph_float_t grph_math_cbrt(struct grph_existential * number);
+grph_float_t grph_math_pow(struct grph_existential * number, struct grph_existential * power);
 grph_float_t grph_math_PI(void);
+grph_integer_t grph_math_round(struct grph_existential * number);
+grph_integer_t grph_math_floor(struct grph_existential * number);
+grph_integer_t grph_math_ceil(struct grph_existential * number);
 
 #endif /* GRPH_NS_MATH_H */
 

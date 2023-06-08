@@ -13,6 +13,7 @@
 #define GRPH_NS_STDIO_H
 
 #include "grph_types.h"
+#include "grph_shapes.h"
 
 grph_string_t grph_stdio_getLineInString(grph_string_t string, grph_integer_t line);
 optional_pos_t grph_stdio_getMousePos(void);
