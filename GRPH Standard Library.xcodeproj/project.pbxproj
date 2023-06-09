@@ -22,6 +22,8 @@
 		20C89BB12A33A39B00B66CA3 /* string.c in Sources */ = {isa = PBXBuildFile; fileRef = 20C89BAD2A33A39B00B66CA3 /* string.c */; };
 		20C89BB22A33A39B00B66CA3 /* integer.c in Sources */ = {isa = PBXBuildFile; fileRef = 20C89BAE2A33A39B00B66CA3 /* integer.c */; };
 		20C89BB32A33A39B00B66CA3 /* rotation.c in Sources */ = {isa = PBXBuildFile; fileRef = 20C89BAF2A33A39B00B66CA3 /* rotation.c */; };
+		20C89BB62A33A4ED00B66CA3 /* Rectangle.c in Sources */ = {isa = PBXBuildFile; fileRef = 20C89BB52A33A4ED00B66CA3 /* Rectangle.c */; };
+		20C89BBA2A33A50C00B66CA3 /* Group.c in Sources */ = {isa = PBXBuildFile; fileRef = 20C89BB92A33A50C00B66CA3 /* Group.c */; };
 		20D640F527C003E6009B8159 /* test_char.c in Sources */ = {isa = PBXBuildFile; fileRef = 20D640F427C003E6009B8159 /* test_char.c */; };
 		20D6410127C1A938009B8159 /* cstring.c in Sources */ = {isa = PBXBuildFile; fileRef = 20D6410027C1A938009B8159 /* cstring.c */; };
 		20D6410327C281E7009B8159 /* math.c in Sources */ = {isa = PBXBuildFile; fileRef = 20D6410227C281E7009B8159 /* math.c */; };
@@ -84,6 +86,8 @@
 		20C89BAD2A33A39B00B66CA3 /* string.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = string.c; sourceTree = "<group>"; };
 		20C89BAE2A33A39B00B66CA3 /* integer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = integer.c; sourceTree = "<group>"; };
 		20C89BAF2A33A39B00B66CA3 /* rotation.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rotation.c; sourceTree = "<group>"; };
+		20C89BB52A33A4ED00B66CA3 /* Rectangle.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Rectangle.c; sourceTree = "<group>"; };
+		20C89BB92A33A50C00B66CA3 /* Group.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Group.c; sourceTree = "<group>"; };
 		20D640F427C003E6009B8159 /* test_char.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = test_char.c; sourceTree = "<group>"; };
 		20D640FC27C12439009B8159 /* grph_op.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = grph_op.h; sourceTree = "<group>"; };
 		20D6410027C1A938009B8159 /* cstring.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cstring.c; sourceTree = "<group>"; };
@@ -234,7 +238,9 @@
 		20C89BB42A33A3C900B66CA3 /* shapes */ = {
 			isa = PBXGroup;
 			children = (
+				20C89BB92A33A50C00B66CA3 /* Group.c */,
 				20C89BA02A3126BF00B66CA3 /* Background.c */,
+				20C89BB52A33A4ED00B66CA3 /* Rectangle.c */,
 			);
 			path = shapes;
 			sourceTree = "<group>";
@@ -339,6 +345,7 @@
 				20D640F527C003E6009B8159 /* test_char.c in Sources */,
 				20C89BB12A33A39B00B66CA3 /* string.c in Sources */,
 				208DFD9727B83E3F0048A10D /* fields.c in Sources */,
+				20C89BB62A33A4ED00B66CA3 /* Rectangle.c in Sources */,
 				20D6410127C1A938009B8159 /* cstring.c in Sources */,
 				20BCAD9B281489E000E48507 /* box.c in Sources */,
 				20A04DFE27A1BB74002B11AB /* standard.c in Sources */,
@@ -351,6 +358,7 @@
 				20A69D3827A8175D00014B26 /* test_strings.c in Sources */,
 				20C89BA12A3126BF00B66CA3 /* Background.c in Sources */,
 				20A04E0B27A323CD002B11AB /* stdio.c in Sources */,
+				20C89BBA2A33A50C00B66CA3 /* Group.c in Sources */,
 				20C89BB02A33A39B00B66CA3 /* float.c in Sources */,
 				20D6410327C281E7009B8159 /* math.c in Sources */,
 			);

@@ -114,7 +114,7 @@ $(INSTALL_LIB_YS):	$(GRPH_YS_DYN)
 $(TEST):	$(TEST_OBJ)
 	$(CC) -o $(TEST) $(TEST_OBJ) $(LDTESTLIBS) $(LDLIBS) $(LDFLAGS) $(OTHER_LDFLAGS)
 
-asan: CFLAGS += -fsanitize=address
+asan: CFLAGS += -fsanitize=address -g3
 asan: CXXFLAGS += -fsanitize=address
 asan: LDFLAGS += -fsanitize=address
 asan: CC = clang

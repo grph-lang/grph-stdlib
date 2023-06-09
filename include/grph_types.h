@@ -19,6 +19,8 @@ typedef int64_t grph_integer_t;
 typedef double grph_float_t;
 typedef float grph_rotation_t;
 typedef char grph_boolean_t;
+typedef uint8_t grph_stroke_t;
+typedef uint8_t grph_direction_t;
 
 struct {
     grph_float_t x;
