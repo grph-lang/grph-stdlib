@@ -37,20 +37,22 @@ CPPFLAGS	=	-Wall -Wextra -iquote include
 TEST_FLAGS	=	-g
 COV_FLAGS	=	-g --coverage
 LDLIBS		=	-lm
-LDFLAGS		=
+LDFLAGS		=	-L.
 LDTESTLIBS	=	--coverage -lcriterion
-LD_YS_LIBS	=	-lcsfml-graphics -lcsfml-window -lcsfml-system
+LD_YS_LIBS	=	-lsfml-graphics -lsfml-window -lsfml-system -lgrph
 
 ifeq ($(OS_UNAME),Darwin)
 	GRPH_DYN	=	libgrph.dylib
 	GRPH_YS_DYN	=	libgrphysfml.dylib
-	DYN_CMD		=	$(CC) -dynamiclib -Wl,-U,_grph_entrypoint
+	DYN_CMD		=	$(CC) -dynamiclib -Wl,-U,_grph_entrypoint -Wl,-U,_grphg_init
+	DYN_YS_CMD	=	$(CXX) -dynamiclib
 	INSTALL_CMD	=	cp -c
 	POSTINSTALL_CMD	=
 else
 	GRPH_DYN	=	libgrph.so
 	GRPH_YS_DYN	=	libgrphysfml.so
 	DYN_CMD		=	$(CC) -shared
+	DYN_YS_CMD	=	$(CXX) -shared
 	INSTALL_CMD	=	cp
 	POSTINSTALL_CMD	=	ldconfig
 endif
@@ -98,7 +100,7 @@ $(GRPH_DYN):	$(GRPH_OBJ)
 	$(DYN_CMD) -o $(GRPH_DYN) $(GRPH_OBJ) $(LDLIBS) $(LDFLAGS)
 
 $(GRPH_YS_DYN):	$(GRPH_YS_OBJ)
-	$(DYN_CMD) -o $(GRPH_YS_DYN) $(GRPH_YS_OBJ) $(LDLIBS) $(LD_YS_LIBS) $(LDFLAGS)
+	$(DYN_YS_CMD) -o $(GRPH_YS_DYN) $(GRPH_YS_OBJ) $(LDLIBS) $(LD_YS_LIBS) $(LDFLAGS)
 
 $(INSTALL_LIB):	$(GRPH_DYN)
 	mkdir -p $(INSTALL_LOC)
@@ -115,6 +117,7 @@ asan: CFLAGS += -fsanitize=address
 asan: CXXFLAGS += -fsanitize=address
 asan: LDFLAGS += -fsanitize=address
 asan: CC = clang
+asan: CXX = clang++
 asan: all
 
 re: fclean
