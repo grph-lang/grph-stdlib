@@ -88,6 +88,7 @@
 		20C89BAF2A33A39B00B66CA3 /* rotation.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rotation.c; sourceTree = "<group>"; };
 		20C89BB52A33A4ED00B66CA3 /* Rectangle.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Rectangle.c; sourceTree = "<group>"; };
 		20C89BB92A33A50C00B66CA3 /* Group.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Group.c; sourceTree = "<group>"; };
+		20C89BBB2A33F3D800B66CA3 /* grph_shapes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = grph_shapes.h; sourceTree = "<group>"; };
 		20D640F427C003E6009B8159 /* test_char.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = test_char.c; sourceTree = "<group>"; };
 		20D640FC27C12439009B8159 /* grph_op.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = grph_op.h; sourceTree = "<group>"; };
 		20D6410027C1A938009B8159 /* cstring.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cstring.c; sourceTree = "<group>"; };
@@ -163,6 +164,7 @@
 				20A04E0527A1C4C7002B11AB /* grph_types.h */,
 				208DFD9527B83E3F0048A10D /* grph_fields.h */,
 				20A69D3127A80EC100014B26 /* grph_string_t.h */,
+				20C89BBB2A33F3D800B66CA3 /* grph_shapes.h */,
 				2090E2CA27BABE6B00DE1670 /* existentials.inc */,
 				2090E2CB27BABF5600DE1670 /* existentials.h */,
 				20D640FC27C12439009B8159 /* grph_op.h */,

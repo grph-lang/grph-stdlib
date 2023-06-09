@@ -26,6 +26,7 @@ struct {
     void *buffer;
 } typedef grph_array_t;
 
+typedef grph_optional_t(grph_array_t *) optional_array_t;
 
 /// Allocate a new array
 /// @param type the type of the array. must be an array type

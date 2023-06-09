@@ -39,10 +39,19 @@ struct {
     struct grph_existential paint;
 } typedef grph_Background_t;
 
-grph_Background_t *grphc_Background(
-    grph_pos_t size, struct grph_existential *paint);
-void grphd_Background(grph_Background_t *bg);
+struct {
+    // superclass: grph_shape_t
+    grph_shape_t superclass;
 
-void grphd_Group(grph_Group_t *group);
+    grph_pos_t pos;
+    grph_integer_t zpos;
+    grph_pos_t size;
+    grph_rotation_t rotation;
+    struct grph_existential paint;
+    grph_boolean_t filling;
+    grph_float_t strokeWidth;
+    grph_stroke_t stroke;
+    grph_array_t *strokeDashArray;
+} typedef grph_Rectangle_t;
 
 #endif /* GRPH_SHAPES_H */

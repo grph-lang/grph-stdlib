@@ -18,3 +18,4 @@ type return_color_typetable[] = color.TYPE
 
 type return_Background_typetable[] = Background.TYPE
 type return_Group_typetable[] = Group.TYPE
+type return_Rectangle_typetable[] = Rectangle.TYPE

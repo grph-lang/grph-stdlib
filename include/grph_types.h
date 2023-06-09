@@ -19,6 +19,12 @@ typedef int64_t grph_integer_t;
 typedef double grph_float_t;
 typedef float grph_rotation_t;
 typedef char grph_boolean_t;
+
+enum {
+    GRPH_STROKE_ELONGATED = 0,
+    GRPH_STROKE_CUT = 1,
+    GRPH_STROKE_ROUNDED = 2,
+}; // use uint8_t because enum size is different
 typedef uint8_t grph_stroke_t;
 typedef uint8_t grph_direction_t;
 
@@ -45,13 +51,16 @@ struct grph_existential {
 };
 
 #define grph_optional_t(wrapped) struct { bool exists; wrapped value; }
+
 #define GRPH_NULL {0}
+#define GRPH_OPTIONAL_OR(opt, default) ((opt).exists ? (opt).value : (default))
 
 typedef grph_optional_t(grph_integer_t) optional_integer_t;
 typedef grph_optional_t(grph_float_t) optional_float_t;
 typedef grph_optional_t(grph_pos_t) optional_pos_t;
 typedef grph_optional_t(grph_string_t) optional_string_t;
 typedef grph_optional_t(grph_rotation_t) optional_rotation_t;
+typedef grph_optional_t(grph_stroke_t) optional_stroke_t;
 
 
 #endif /* GRPH_TYPES_H */
