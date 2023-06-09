@@ -9,10 +9,11 @@
 ##  file, You can obtain one at https://mozilla.org/MPL/2.0/.
 ##
 
-GRPH_SRC	=	$(wildcard sources/libgrph/*.c)
-GRPH_BS_SRC	=	$(wildcard sources/libgrph/*.grph)
-GRPH_YS_SRC	=	$(wildcard sources/libysfml/*.c++) $(wildcard sources/libysfml/*.grph)
-TEST_SRC	=	$(wildcard tests/*.c)
+GRPH_SRC	=	$(shell find sources/libgrph -type f -name '*.c')
+GRPH_BS_SRC	=	$(shell find sources/libgrph -type f -name '*.grph')
+GRPH_YS_SRC	=	$(shell find sources/libysfml -type f -name '*.c++') \
+				$(shell find sources/libysfml -type f -name '*.grph')
+TEST_SRC	=	$(shell find tests -type f -name '*.c')
 
 GRPH_OBJ	=	$(GRPH_SRC:sources/%.c=build/%.c.o) \
 				$(GRPH_BS_SRC:sources/%.grph=build/%.grph.o)
@@ -30,14 +31,14 @@ GRPH_STATIC	=	libgrph.a
 CC			?=	gcc
 GRPHC		=	grph compile
 
-GRPH_FLAGS	=	--disable-top-level-code --disable-mangling --pic
-CFLAGS		=	-fPIC -Wno-old-style-declaration
-CXXFLAGS	=	-fPIC -std=c++20
-CPPFLAGS	=	-Wall -Wextra -iquote include
+GRPH_FLAGS	+=	--disable-top-level-code --disable-mangling --pic
+CFLAGS		+=	-fPIC -Wno-old-style-declaration
+CXXFLAGS	+=	-fPIC -std=c++20
+CPPFLAGS	+=	-Wall -Wextra -iquote include
 TEST_FLAGS	=	-g
 COV_FLAGS	=	-g --coverage
-LDLIBS		=	-lm
-LDFLAGS		=	-L.
+LDLIBS		+=	-lm
+LDFLAGS		+=	-L.
 LDTESTLIBS	=	--coverage -lcriterion
 LD_YS_LIBS	=	-lsfml-graphics -lsfml-window -lsfml-system -lgrph
 
