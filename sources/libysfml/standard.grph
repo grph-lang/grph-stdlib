@@ -24,7 +24,7 @@ void grphg_update[] = #external
 
 #function void grph_standard_unvalidate[shape shape]
 	auto shapes = back.shapes
-	#foreach i : range[0 shapes.length]
+	#foreach i : range[0 [shapes.length - 1]]
 		#if shapes{i} == shape
 			shapes{i-}
 			#break
