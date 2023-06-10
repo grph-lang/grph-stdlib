@@ -21,6 +21,7 @@ extern "C" {
 extern "C" {
     grph_Background_t *grphv_global_back = nullptr;
     struct typetable *return_color_typetable(void);
+    void grphg_update_content_impl(void);   
 }
 
 sf::RenderWindow &getWindow()
@@ -42,6 +43,7 @@ extern "C" void grphg_update(void)
     }
     grph_color_t *color = (grph_color_t *) grphv_global_back->paint.data;
     window.clear(sf::Color(color->red, color->green, color->blue));
+    grphg_update_content_impl();
     window.display();
 }
 

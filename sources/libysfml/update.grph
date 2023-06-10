@@ -1,0 +1,23 @@
+//
+//  update.c++
+//  GRPH stdlib - libysfml
+//
+//  Created by Emil Pedersen on 10/06/2023.
+// 
+//  This Source Code Form is subject to the terms of the Mozilla Public
+//  License, v. 2.0. If a copy of the MPL was not distributed with this
+//  file, You can obtain one at https://mozilla.org/MPL/2.0/.
+//
+
+#requires GRPH 1.11
+#compiler strictest true
+
+void grphg_draw_Rectangle[Rectangle subject] = #external
+
+#function void grphg_update_content_impl[]
+	#foreach shape : back.shapes
+		#switch shape.type
+			#case Rectangle.TYPE
+				grphg_draw_Rectangle[[shape as! Rectangle]]
+			#default
+				log: "Warning: tried to draw unknown shape type" shape.type

@@ -24,6 +24,7 @@
 		20C89BB32A33A39B00B66CA3 /* rotation.c in Sources */ = {isa = PBXBuildFile; fileRef = 20C89BAF2A33A39B00B66CA3 /* rotation.c */; };
 		20C89BB62A33A4ED00B66CA3 /* Rectangle.c in Sources */ = {isa = PBXBuildFile; fileRef = 20C89BB52A33A4ED00B66CA3 /* Rectangle.c */; };
 		20C89BBA2A33A50C00B66CA3 /* Group.c in Sources */ = {isa = PBXBuildFile; fileRef = 20C89BB92A33A50C00B66CA3 /* Group.c */; };
+		20C89BBE2A33F53100B66CA3 /* update.c++ in Sources */ = {isa = PBXBuildFile; fileRef = 20C89BBD2A33F53100B66CA3 /* update.c++ */; };
 		20D640F527C003E6009B8159 /* test_char.c in Sources */ = {isa = PBXBuildFile; fileRef = 20D640F427C003E6009B8159 /* test_char.c */; };
 		20D6410127C1A938009B8159 /* cstring.c in Sources */ = {isa = PBXBuildFile; fileRef = 20D6410027C1A938009B8159 /* cstring.c */; };
 		20D6410327C281E7009B8159 /* math.c in Sources */ = {isa = PBXBuildFile; fileRef = 20D6410227C281E7009B8159 /* math.c */; };
@@ -89,6 +90,8 @@
 		20C89BB52A33A4ED00B66CA3 /* Rectangle.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Rectangle.c; sourceTree = "<group>"; };
 		20C89BB92A33A50C00B66CA3 /* Group.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Group.c; sourceTree = "<group>"; };
 		20C89BBB2A33F3D800B66CA3 /* grph_shapes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = grph_shapes.h; sourceTree = "<group>"; };
+		20C89BBC2A33F49300B66CA3 /* update.grph */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = update.grph; sourceTree = "<group>"; };
+		20C89BBD2A33F53100B66CA3 /* update.c++ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "update.c++"; sourceTree = "<group>"; };
 		20D640F427C003E6009B8159 /* test_char.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = test_char.c; sourceTree = "<group>"; };
 		20D640FC27C12439009B8159 /* grph_op.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = grph_op.h; sourceTree = "<group>"; };
 		20D6410027C1A938009B8159 /* cstring.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cstring.c; sourceTree = "<group>"; };
@@ -136,10 +139,10 @@
 				20C89BA52A33A06900B66CA3 /* ns */,
 				20C89BA62A33A37000B66CA3 /* conversion */,
 				20C89BB42A33A3C900B66CA3 /* shapes */,
+				208DFD9627B83E3F0048A10D /* fields.c */,
 				20C89BA22A3126D400B66CA3 /* fields.grph */,
 				20D6410027C1A938009B8159 /* cstring.c */,
 				20BCAD9A281489E000E48507 /* box.c */,
-				208DFD9627B83E3F0048A10D /* fields.c */,
 				20AABB2527CABB230049634C /* grph_array.c */,
 				20BCAD9628147BB500E48507 /* vwt.c */,
 				20AABB2727CBE37F0049634C /* main.c */,
@@ -203,6 +206,8 @@
 			children = (
 				20C89B852A31269700B66CA3 /* init.c++ */,
 				20C89BA32A33999F00B66CA3 /* standard.grph */,
+				20C89BBD2A33F53100B66CA3 /* update.c++ */,
+				20C89BBC2A33F49300B66CA3 /* update.grph */,
 			);
 			path = libysfml;
 			sourceTree = "<group>";
@@ -353,6 +358,7 @@
 				20A04DFE27A1BB74002B11AB /* standard.c in Sources */,
 				20C89BB22A33A39B00B66CA3 /* integer.c in Sources */,
 				20C89BB32A33A39B00B66CA3 /* rotation.c in Sources */,
+				20C89BBE2A33F53100B66CA3 /* update.c++ in Sources */,
 				20BCAD9728147BB500E48507 /* vwt.c in Sources */,
 				20AABB2827CBE37F0049634C /* main.c in Sources */,
 				2090E2D127BD724B00DE1670 /* strutils.c in Sources */,
@@ -484,8 +490,11 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
+				OTHER_CFLAGS = (
+					"-isystem",
+					/opt/homebrew/include,
+				);
+				OTHER_LDFLAGS = "-L/opt/homebrew/lib";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -495,8 +504,11 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
+				OTHER_CFLAGS = (
+					"-isystem",
+					/opt/homebrew/include,
+				);
+				OTHER_LDFLAGS = "-L/opt/homebrew/lib";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -509,7 +521,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SYSTEM_HEADER_SEARCH_PATHS = "/opt/homebrew/Cellar/criterion/2.3.3-bleeding4/include";
+				SYSTEM_HEADER_SEARCH_PATHS = /opt/homebrew/include;
 				USER_HEADER_SEARCH_PATHS = include;
 			};
 			name = Debug;
@@ -522,7 +534,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SYSTEM_HEADER_SEARCH_PATHS = "/opt/homebrew/Cellar/criterion/2.3.3-bleeding4/include";
+				SYSTEM_HEADER_SEARCH_PATHS = /opt/homebrew/include;
 				USER_HEADER_SEARCH_PATHS = include;
 			};
 			name = Release;
