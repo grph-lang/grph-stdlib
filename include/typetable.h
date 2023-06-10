@@ -31,6 +31,7 @@ struct vwt {
     copy_func *copy;
     destroy_func *destroy;
     deinit_func *deinit;
+    struct shape_witness_table *swt;
 };
 
 struct typetable {
