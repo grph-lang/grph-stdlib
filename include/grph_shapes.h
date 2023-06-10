@@ -31,7 +31,8 @@ struct {
 struct {
     // superclass: grph_shape_t
     grph_shape_t superclass;
-
+    
+    grph_integer_t zpos;
     // the shapes in this group
     grph_array_t *shapes;
 } typedef grph_Group_t;

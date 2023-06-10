@@ -12,9 +12,15 @@
 #include "grph_shapes.h"
 #include "box.h"
 #include "vwt.h"
+#include "shape_witness.h"
 
 struct typetable *return_Background_typetable(void);
 struct typetable *return_shape_array_typetable(void);
+
+struct shape_witness_table grphswt_Background = {
+    .size_offset = offsetof(grph_Background_t, size),
+    .paint_offset = offsetof(grph_Background_t, paint),
+};
 
 grph_Background_t *grphc_Background(grph_pos_t size, struct grph_existential *paint)
 {
