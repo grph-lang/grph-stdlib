@@ -15,6 +15,17 @@
 
 struct typetable *return_Rectangle_typetable(void);
 
+static void init_stroke_wrapper(struct stroke_wrapper *this,
+    bool strokeWidth_exists, grph_float_t strokeWidth,
+    optional_stroke_t stroke,
+    optional_array_t strokeDashArray)
+{
+    this->filling = !(strokeWidth_exists || stroke.exists || strokeDashArray.exists);
+    this->strokeWidth = strokeWidth_exists ? strokeWidth : 5;
+    this->stroke = GRPH_OPTIONAL_OR(stroke, GRPH_STROKE_ELONGATED);
+    this->strokeDashArray = GRPH_OPTIONAL_OR(strokeDashArray, NULL);
+}
+
 grph_Rectangle_t *grphc_Rectangle(
     bool name_exists, grph_string_t name,
     grph_pos_t pos,
@@ -34,18 +45,15 @@ grph_Rectangle_t *grphc_Rectangle(
     this->size = size;
     this->rotation = rotation_exists ? rotation : 0;
     this->paint = *paint;
-    this->filling = !(strokeWidth_exists || stroke.exists || strokeDashArray.exists);
-    this->strokeWidth = strokeWidth_exists ? strokeWidth : 5;
-    this->stroke = GRPH_OPTIONAL_OR(stroke, GRPH_STROKE_ELONGATED);
-    this->strokeDashArray = GRPH_OPTIONAL_OR(strokeDashArray, NULL);
+    init_stroke_wrapper(&this->strokeWrapper, strokeWidth_exists, strokeWidth, stroke, strokeDashArray);
     return this;
 }
 
 void grphd_Rectangle(grph_Rectangle_t *this)
 {
     grphvwt_destroy_mixed(&this->paint, this->paint.type);
-    if (this->strokeDashArray) {
-        grphvwt_release_ref(this->strokeDashArray, this->strokeDashArray->isa);
+    if (this->strokeWrapper.strokeDashArray) {
+        grphvwt_release_ref(this->strokeWrapper.strokeDashArray, this->strokeWrapper.strokeDashArray->isa);
     }
     dealloc_box(this);
 }

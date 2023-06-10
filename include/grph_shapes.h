@@ -16,6 +16,13 @@
 #include "typetable.h"
 #include "grph_array.h"
 
+struct stroke_wrapper {
+    grph_boolean_t filling;
+    grph_float_t strokeWidth;
+    grph_stroke_t stroke;
+    grph_array_t *strokeDashArray;
+};
+
 struct {
     // as all reference types
     struct typetable *isa;
@@ -48,10 +55,7 @@ struct {
     grph_pos_t size;
     grph_rotation_t rotation;
     struct grph_existential paint;
-    grph_boolean_t filling;
-    grph_float_t strokeWidth;
-    grph_stroke_t stroke;
-    grph_array_t *strokeDashArray;
+    struct stroke_wrapper strokeWrapper;
 } typedef grph_Rectangle_t;
 
 grph_Background_t *grphc_Background(grph_pos_t size, struct grph_existential *paint);

@@ -30,13 +30,13 @@ extern "C" void grphg_draw_Rectangle(grph_Rectangle_t *subject)
 
     rect.setPosition(subject->pos.x, subject->pos.y);
     rect.setRotation(subject->rotation);
-    if (subject->filling) {
+    if (subject->strokeWrapper.filling) {
         rect.setOutlineColor(sf::Color::Transparent);
         rect.setFillColor(sfcolor);
     } else {
         rect.setFillColor(sf::Color::Transparent);
         rect.setOutlineColor(sfcolor);
-        rect.setOutlineThickness(subject->strokeWidth);
+        rect.setOutlineThickness(subject->strokeWrapper.strokeWidth);
     }
     window.draw(rect);
 }
