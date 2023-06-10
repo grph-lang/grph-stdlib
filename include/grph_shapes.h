@@ -54,4 +54,10 @@ struct {
     grph_array_t *strokeDashArray;
 } typedef grph_Rectangle_t;
 
+grph_Background_t *grphc_Background(grph_pos_t size, struct grph_existential *paint);
+
+void grphd_Group(grph_Group_t *);
+void grphd_Background(grph_Background_t *);
+void grphd_Rectangle(grph_Rectangle_t *);
+
 #endif /* GRPH_SHAPES_H */
