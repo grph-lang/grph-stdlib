@@ -14,10 +14,14 @@
 
 void grphg_update[] = #external
 
+#function void grphg_autoupdate[]
+	#if autoupdate
+		grphg_update[]
+
 #function void grph_standard_validate[shape shape]
 	auto shapes = back.shapes
 	shapes{+} = shape
-	grphg_update[]
+	grphg_autoupdate[]
 
 #function void grph_standard_update[]
 	grphg_update[]
@@ -28,4 +32,4 @@ void grphg_update[] = #external
 		#if shapes{i} == shape
 			shapes{i-}
 			#break
-	grphg_update[]
+	grphg_autoupdate[]

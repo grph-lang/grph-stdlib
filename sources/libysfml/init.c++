@@ -20,6 +20,7 @@ extern "C" {
 
 extern "C" {
     grph_Background_t *grphv_global_back = nullptr;
+    bool grphv_global_autoupdate = true;
     struct typetable *return_color_typetable(void);
     void grphg_update_content_impl(void);   
 }
