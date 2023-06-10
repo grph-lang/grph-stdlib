@@ -34,6 +34,7 @@ grph_Group_t *grphc_Group(bool name_exists, grph_string_t name, optional_integer
 
 grph_array_t *grphp_Group_shapes_get(grph_Group_t *this)
 {
+    retain_box(this->shapes);
     return this->shapes;
 }
 
