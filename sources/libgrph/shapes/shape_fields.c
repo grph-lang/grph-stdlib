@@ -24,7 +24,7 @@ type grphp_shape_##name##_get(grph_shape_t *shape) \
 type *grphp_shape_##name##_ptr(grph_shape_t **shape) \
 { \
     size_t offset = (*shape)->isa->vwt->swt->name##_offset; \
-    void *opaque = shape; \
+    void *opaque = *shape; \
     return opaque + offset; \
 } \
 GET_FROM_PTR(name, type)
