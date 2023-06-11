@@ -21,5 +21,10 @@ type grphp_shape_##name##_get(grph_shape_t *shape) \
     void *opaque = shape; \
     return *(type *) (opaque + offset); \
 }
+#define STROKE_WRAPPER_FIELD(name, type) \
+type grphp_shape_##name##_get(grph_shape_t *shape) \
+{ \
+    return grphp_shape_strokeWrapper_get(shape).name; \
+}
 #include "shape_witness.inc"
 #undef SWT_FIELD

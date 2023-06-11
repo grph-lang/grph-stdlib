@@ -16,8 +16,10 @@
 
 struct shape_witness_table {
 #define SWT_FIELD(name, type) uint16_t name##_offset;
+#define STROKE_WRAPPER_FIELD(name, type)
 #include "shape_witness.inc"
 #undef SWT_FIELD
+#undef STROKE_WRAPPER_FIELD
 };
 
 #endif /* GRPH_SHAPE_WITNESS_H */
