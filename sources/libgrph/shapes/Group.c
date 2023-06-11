@@ -20,7 +20,7 @@ struct typetable *return_Group_typetable(void);
 struct typetable *return_shape_array_typetable(void);
 
 struct shape_witness_table grphswt_Group = {
-    .zpos_offset = offsetof(grph_Group_t, zpos)
+    .zPos_offset = offsetof(grph_Group_t, zpos)
 };
 
 grph_Group_t *grphc_Group(bool name_exists, grph_string_t name, optional_integer_t zpos, bool rotation_exists, grph_rotation_t rotation, grph_array_t *shapes)

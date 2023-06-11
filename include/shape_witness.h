@@ -15,12 +15,9 @@
 #include <stdint.h>
 
 struct shape_witness_table {
-    uint16_t pos_offset;
-    uint16_t zpos_offset;
-    uint16_t size_offset;
-    uint16_t rotation_offset;
-    uint16_t paint_offset;
-    uint16_t strokeWrapper_offset;
+#define SWT_FIELD(name, type) uint16_t name##_offset;
+#include "shape_witness.inc"
+#undef SWT_FIELD
 };
 
 #endif /* GRPH_SHAPE_WITNESS_H */

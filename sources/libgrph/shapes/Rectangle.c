@@ -17,8 +17,8 @@
 struct typetable *return_Rectangle_typetable(void);
 
 struct shape_witness_table grphswt_Rectangle = {
-    .pos_offset = offsetof(grph_Rectangle_t, pos),
-    .zpos_offset = offsetof(grph_Rectangle_t, zpos),
+    .location_offset = offsetof(grph_Rectangle_t, pos),
+    .zPos_offset = offsetof(grph_Rectangle_t, zpos),
     .size_offset = offsetof(grph_Rectangle_t, size),
     .rotation_offset = offsetof(grph_Rectangle_t, rotation),
     .paint_offset = offsetof(grph_Rectangle_t, paint),
