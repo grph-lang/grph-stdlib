@@ -1,0 +1,30 @@
+//
+//  methods.c
+//  GRPH stdlib - libgrph
+//
+//  Created by Emil Pedersen on 12/06/2023.
+// 
+//  This Source Code Form is subject to the terms of the Mozilla Public
+//  License, v. 2.0. If a copy of the MPL was not distributed with this
+//  file, You can obtain one at https://mozilla.org/MPL/2.0/.
+//
+
+#requires GRPH 1.11
+#compiler strict true
+
+#function void grphm_shape_translate[shape subject, pos translation]
+	shape s = subject
+	s.location.x += translation.x
+	s.location.y += translation.y
+
+#function void grphm_shape_setPosition[shape subject, pos newPosition]
+	shape s = subject
+	s.location = newPosition
+
+#function void grphm_shape_rotate[shape subject, rotation addRotation]
+	shape s = subject
+	s.rotation += addRotation
+
+#function void grphm_shape_setRotation[shape subject, rotation rotation]
+	shape s = subject
+	s.rotation = rotation

@@ -30,6 +30,7 @@
 		20D640F527C003E6009B8159 /* test_char.c in Sources */ = {isa = PBXBuildFile; fileRef = 20D640F427C003E6009B8159 /* test_char.c */; };
 		20D6410127C1A938009B8159 /* cstring.c in Sources */ = {isa = PBXBuildFile; fileRef = 20D6410027C1A938009B8159 /* cstring.c */; };
 		20D6410327C281E7009B8159 /* math.c in Sources */ = {isa = PBXBuildFile; fileRef = 20D6410227C281E7009B8159 /* math.c */; };
+		20E4B6182A37871700B29183 /* methods.grph in Sources */ = {isa = PBXBuildFile; fileRef = 20E4B6172A37871700B29183 /* methods.grph */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -103,6 +104,7 @@
 		20D6410227C281E7009B8159 /* math.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = math.c; sourceTree = "<group>"; };
 		20D6410427C2836D009B8159 /* math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = math.h; sourceTree = "<group>"; };
 		20D6410827C28796009B8159 /* math.grph */ = {isa = PBXFileReference; lastKnownFileType = text; path = math.grph; sourceTree = "<group>"; };
+		20E4B6172A37871700B29183 /* methods.grph */ = {isa = PBXFileReference; lastKnownFileType = text; path = methods.grph; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,6 +258,7 @@
 				20C89BA02A3126BF00B66CA3 /* Background.c */,
 				20C89BB52A33A4ED00B66CA3 /* Rectangle.c */,
 				20C89BC02A362E8600B66CA3 /* shape_fields.c */,
+				20E4B6172A37871700B29183 /* methods.grph */,
 			);
 			path = shapes;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 				208DFD9727B83E3F0048A10D /* fields.c in Sources */,
 				20C89BB62A33A4ED00B66CA3 /* Rectangle.c in Sources */,
 				20D6410127C1A938009B8159 /* cstring.c in Sources */,
+				20E4B6182A37871700B29183 /* methods.grph in Sources */,
 				20BCAD9B281489E000E48507 /* box.c in Sources */,
 				20A04DFE27A1BB74002B11AB /* standard.c in Sources */,
 				20C89BB22A33A39B00B66CA3 /* integer.c in Sources */,
